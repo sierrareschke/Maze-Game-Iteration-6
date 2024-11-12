@@ -2,6 +2,6 @@ package csci.ooad.polymorphia.strategy;
 
 import csci.ooad.polymorphia.command.Command;
 
-public interface BehaviorStrategy {
-    Command getAction();
+public interface EatStrategy {
+    Command eat();
 }

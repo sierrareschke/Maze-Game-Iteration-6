@@ -4,10 +4,10 @@ import csci.ooad.polymorphia.characters.Knight;
 import csci.ooad.polymorphia.command.Command;
 import csci.ooad.polymorphia.command.CommandFactory;
 
-public class KnightStrategy implements BehaviorStrategy {
+public class KnightEatStrategy implements EatStrategy {
 
     @Override
-    public Command getAction(){
+    public Command eat(){
         return CommandFactory.createCommand("eat");
     }
 }
