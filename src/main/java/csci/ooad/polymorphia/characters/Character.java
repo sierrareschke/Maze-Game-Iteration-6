@@ -12,7 +12,7 @@ import java.text.DecimalFormat;
 import static csci.ooad.polymorphia.EventBus.post;
 
 
-public abstract class Character implements Comparable<Character> {
+public class Character implements Comparable<Character> {
     static final Double DEFAULT_INITIAL_HEALTH = 5.0;
     static final Double HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME = 0.5;
     static final Double HEALTH_LOST_IN_MOVING_ROOMS = 0.25;
