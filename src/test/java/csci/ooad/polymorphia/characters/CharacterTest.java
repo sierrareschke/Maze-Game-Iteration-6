@@ -62,21 +62,6 @@ class CharacterTest {
         assertEquals(0.5, joe.getHealth() % 1);
     }
 
-//    @Test
-//    void testMovingRoomLossOfQuarterPoint() {
-//        Room currentRoom = new Room("currentRoom");
-//        Room newRoom = new Room("newRoom");
-//        currentRoom.addNeighbor(newRoom);
-//        joe.enterRoom(currentRoom);
-//
-//        // Since nothing is in the current room with Joe, he should move to the new room
-//        joe.doAction();
-//
-//        System.out.println("After moving rooms, Joe's health is: " + joe.getHealth());
-//        assertEquals(4.75, joe.getHealth());
-//        assertEquals(newRoom, joe.getCurrentLocation());
-//    }
-
     @Test
     void testMovingWithNoNeighbors() {
         Room room = new Room("room");
