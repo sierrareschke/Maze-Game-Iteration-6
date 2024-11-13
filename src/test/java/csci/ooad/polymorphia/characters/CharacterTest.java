@@ -15,7 +15,8 @@ class CharacterTest {
 
     @BeforeEach
     void setUp() {
-        joe = new Adventurer("Joe", 5.0);
+        Double initialHealth = 5.0;
+        joe = CharacterFactory.createAdventurer("Joe", Optional.of(initialHealth));
     }
 
     @Test
