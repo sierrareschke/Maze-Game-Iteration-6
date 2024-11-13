@@ -1,10 +1,12 @@
 package csci.ooad.polymorphia.characters;
 
-import csci.ooad.polymorphia.strategy.*;
 
+import csci.ooad.polymorphia.strategy.*;
+import csci.ooad.polymorphia.characters.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class CharacterFactory {
