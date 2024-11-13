@@ -69,27 +69,27 @@ public class CharacterFactory {
 
 
     public Character createAdventurer(String name) {
-        return new Character(name, DEFAULT_INITIAL_HEALTH, new AdventurerFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy());
+        return new Character(name, DEFAULT_INITIAL_HEALTH, new AdventurerFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy(),CharacterType.Adventurer);
     }
 
     public Character createKnight(String name) {
-        return new Character(name, DEFAULT_INITIAL_HEALTH, new KnightFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy());
+        return new Character(name, DEFAULT_INITIAL_HEALTH, new KnightFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy(),CharacterType.Knight);
     }
 
     public Character createGlutton(String name) {
-        return new Character(name, DEFAULT_INITIAL_HEALTH, new GluttonFightStrategy(), new GluttonEatStrategy(), new DefaultMoveStrategy());
+        return new Character(name, DEFAULT_INITIAL_HEALTH, new GluttonFightStrategy(), new GluttonEatStrategy(), new DefaultMoveStrategy(),CharacterType.Glutton);
     }
 
     public Character createCoward(String name) {
-        return new Character(name, DEFAULT_INITIAL_HEALTH, new CowardFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy());
+        return new Character(name, DEFAULT_INITIAL_HEALTH, new CowardFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy(),CharacterType.Coward);
     }
 
     public Character createDemon(String name) {
-        return new Character(name, DEMON_INITIAL_HEALTH, new DemonFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy());
+        return new Character(name, DEMON_INITIAL_HEALTH, new DemonFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy(),CharacterType.Demon);
     }
 
     public Character createCreature(String name) {
-        return new Character(name, CREATURE_INITIAL_HEALTH, new CreatureFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy());
+        return new Character(name, CREATURE_INITIAL_HEALTH, new CreatureFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy(),CharacterType.Creature);
         //return new Character(name, character -> new NoOpCommand()); // "Do nothing" for non-Demon creatures
     }
 
