@@ -236,9 +236,9 @@ public class Maze {
             return this;
         }
 
-        private Builder addAdventurers(List<Adventurer> adventurers) {
-            for (Adventurer adventurer : adventurers) {
-                nextRoom().add(adventurer);
+        private Builder addAdventurers(List<Character> characters) {
+            for (Character character : characters) {
+                nextRoom().add(character);
             }
             return this;
         }
@@ -262,15 +262,15 @@ public class Maze {
             return this;
         }
 
-        public Builder addAdventurers(Adventurer... adventurers) {
-            for (Adventurer adventurer : adventurers) {
+        public Builder addAdventurers(Character... adventurers) {
+            for (Character adventurer : adventurers) {
                 nextRoom().add(adventurer);
             }
             return this;
         }
 
-        private Builder addCreatures(List<Creature> creatures) {
-            for (Creature creature : creatures) {
+        private Builder addCreatures(List<Character> creatures) {
+            for (Character creature : creatures) {
                 nextRoom().add(creature);
             }
             return this;
@@ -319,8 +319,8 @@ public class Maze {
             return this;
         }
 
-        public Builder addCreatures(Creature... creatures) {
-            for (Creature creature : creatures) {
+        public Builder addCreatures(Character... creatures) {
+            for (Character creature : creatures) {
                 nextRoom().add(creature);
             }
             return this;
