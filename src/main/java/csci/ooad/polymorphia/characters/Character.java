@@ -22,17 +22,15 @@ public class Character implements Comparable<Character> {
     static final Double HEALTH_LOST_IN_MOVING_ROOMS = 0.25;
     private static final Logger logger = LoggerFactory.getLogger(Character.class);
     private static final DecimalFormat formatter = new DecimalFormat("0.0");
-    protected String name;
-    private Double health;
-
-    private Room currentLocation;
-
-
-    ///////////////////////////////  new section:
-
     private static FightStrategy fightStrategy;
     private static EatStrategy eatStrategy;
     private static MoveStrategy moveStrategy;
+
+
+    ///////////////////////////////  new section:
+    protected String name;
+    private Double health;
+    private Room currentLocation;
 
 
 
@@ -44,21 +42,6 @@ public class Character implements Comparable<Character> {
         this.moveStrategy = moveStrategy;
     }
 
-    public static EatStrategy getEatStrategy() {
-        return eatStrategy;
-    }
-
-    public static FightStrategy getFightStrategy() {
-        return fightStrategy;
-    }
-
-    public static MoveStrategy getMoveStrategy() {
-        return moveStrategy;
-    }
-
-
-    //////////////////////////////
-
     public Character(String name) {
         this(name, DEFAULT_INITIAL_HEALTH);
     }
@@ -66,6 +49,21 @@ public class Character implements Comparable<Character> {
     public Character(String name, Double initialHealth) {
         this.name = name;
         this.health = initialHealth;
+    }
+
+    public static EatStrategy getEatStrategy() {
+        return eatStrategy;
+    }
+
+
+    //////////////////////////////
+
+    public static FightStrategy getFightStrategy() {
+        return fightStrategy;
+    }
+
+    public static MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 
     public Room getCurrentLocation() {
@@ -162,18 +160,18 @@ public class Character implements Comparable<Character> {
         // Do nothing by default
     }
 
-    protected void move() {
-        Room nextLocation = getCurrentLocation().getRandomNeighbor();
-        if (nextLocation != null) {
-            String message = getName() + " moved from " + getCurrentLocation().getName() + " to " + nextLocation.getName();
-            logger.info(message);
-            post(EventType.Moved, message);
-            nextLocation.enter(this);
-            loseHealth(HEALTH_LOST_IN_MOVING_ROOMS);
-        } else {
-            logger.warn("{} has no neighbors!", getCurrentLocation().getName());
-        }
-    }
+//    protected void move() {
+//        Room nextLocation = getCurrentLocation().getRandomNeighbor();
+//        if (nextLocation != null) {
+//            String message = getName() + " moved from " + getCurrentLocation().getName() + " to " + nextLocation.getName();
+//            logger.info(message);
+//            post(EventType.Moved, message);
+//            nextLocation.enter(this);
+//            loseHealth(HEALTH_LOST_IN_MOVING_ROOMS);
+//        } else {
+//            logger.warn("{} has no neighbors!", getCurrentLocation().getName());
+//        }
+//    }
 
 
     protected void gainHealth(double healthValue) {
