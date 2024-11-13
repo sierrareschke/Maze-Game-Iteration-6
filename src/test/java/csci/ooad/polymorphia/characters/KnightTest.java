@@ -13,9 +13,9 @@ public class KnightTest {
     void testFighting() {
         // Arrange - put creature in room with two adventurers
         Double lowHealth = 2.0;
-        Adventurer strongMan = new Adventurer("StrongMan", INITIAL_KNIGHT_HEATH);
-        Adventurer weakKnight = new Knight("WeakKnight", lowHealth);
-        Creature creature = new Creature("Ogre", INITIAL_CREATURE_HEATH);
+        Character strongMan = CharacterFactory.createKnight("StrongKnight");
+        Character weakKnight = CharacterFactory.createKnight("WeakKnight");
+        Character creature = CharacterFactory.createCreature("Ogre");
         Maze.getNewBuilder()
                 .createRoom("only room")
                 .addAdventurers(strongMan)
