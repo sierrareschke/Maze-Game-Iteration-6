@@ -5,7 +5,6 @@ import csci.ooad.polymorphia.strategy.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Random;
 import java.util.stream.IntStream;
 
 public class CharacterFactory {
@@ -20,9 +19,19 @@ public class CharacterFactory {
     public static String[] CREATURE_NAMES = new String[]{"Dragon", "Ogre", "Orc", "Shelob", "Troll", "Evil Wizard"};
     public static String[] DEMON_NAMES = new String[]{"Satan", "Beelzebub", "Devil", "Incubus", "Lucifer", "Succubus"};
 
+<<<<<<< Updated upstream
     public static Character createAdventurer(String name, Optional<Double> healthInput) {
         Double health = healthInput.orElse(DEFAULT_INITIAL_HEALTH);
         return new Character(name, health, new AdventurerFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy());
+=======
+    Random random = new Random();
+
+    public List<Character> createNumberOfAdventurers(Integer numAdventurers) {
+        return IntStream.range(0, numAdventurers)
+                .mapToObj(i -> new Character(ADVENTURER_NAMES[i % ADVENTURER_NAMES.length]))
+                .map(Adventurer.class::cast)
+                .toList();
+>>>>>>> Stashed changes
     }
 
     public static Character createKnight(String name, Optional<Double> healthInput) {
@@ -40,12 +49,12 @@ public class CharacterFactory {
     }
 
     public static Character createDemon(String name) {
-        return new Character(name, DEMON_INITIAL_HEALTH, new DemonFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy());
+        return new Character(name, DEMON_INITIAL_HEALTH, new DemonFightStrategy(), new DemonEatStrategy(), new DefaultMoveStrategy());
     }
 
     public static Character createCreature(String name, Optional<Double> healthInput) {
         Double health = healthInput.orElse(CREATURE_INITIAL_HEALTH);
-        return new Character(name, health, new CreatureFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy());
+        return new Character(name, health, new CreatureFightStrategy(), new CreatureEatStrategy(), new DefaultMoveStrategy());
         //return new Character(name, character -> new NoOpCommand()); // "Do nothing" for non-Demon creatures
     }
 
@@ -80,14 +89,14 @@ public class CharacterFactory {
 
     public static List<Character> createNumberOfCreatures(int numCharacters) {
         return IntStream.range(0, numCharacters)
-                .mapToObj(i -> new Character(CREATURE_NAMES[i % CREATURE_NAMES.length], CREATURE_INITIAL_HEALTH, new CreatureFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy()))
+                .mapToObj(i -> new Character(CREATURE_NAMES[i % CREATURE_NAMES.length], CREATURE_INITIAL_HEALTH, new CreatureFightStrategy(), new CreatureEatStrategy(), new DefaultMoveStrategy()))
                 .map(Character.class::cast)
                 .toList();
     }
 
     public static List<Character> createNumberOfDemons(int numCharacters) {
         return IntStream.range(0, numCharacters)
-                .mapToObj(i -> new Character(DEMON_NAMES[i % DEMON_NAMES.length], DEMON_INITIAL_HEALTH, new DemonFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy()))
+                .mapToObj(i -> new Character(DEMON_NAMES[i % DEMON_NAMES.length], DEMON_INITIAL_HEALTH, new DemonFightStrategy(), new DemonEatStrategy(), new DefaultMoveStrategy()))
                 .map(Character.class::cast)
                 .toList();
     }

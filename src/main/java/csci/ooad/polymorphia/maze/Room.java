@@ -34,7 +34,10 @@ public class Room {
         return characters.stream()
                 .filter(Character::isAdventurer)
                 .filter(Character::isAlive)
+<<<<<<< Updated upstream
                 .map(Character.class::cast)
+=======
+>>>>>>> Stashed changes
                 .sorted()
                 .toList();
     }
@@ -43,7 +46,10 @@ public class Room {
         return characters.stream()
                 .filter(Character::isCreature)
                 .filter(Character::isAlive)
+<<<<<<< Updated upstream
                 .map(Character.class::cast)
+=======
+>>>>>>> Stashed changes
                 .sorted()
                 .toList();
     }

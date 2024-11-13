@@ -73,6 +73,21 @@ public class Character implements Comparable<Character> {
         return moveStrategy;
     }
 
+<<<<<<< Updated upstream
+=======
+
+    //////////////////////////////
+
+//    public Character(String name) {
+//        this(name, DEFAULT_INITIAL_HEALTH);
+//    }
+//
+//    public Character(String name, Double initialHealth) {
+//        this.name = name;
+//        this.health = initialHealth;
+    }
+
+>>>>>>> Stashed changes
     public Room getCurrentLocation() {
         return currentLocation;
     }

@@ -1,7 +1,10 @@
 package csci.ooad.polymorphia;
 
+<<<<<<< Updated upstream
 import csci.ooad.polymorphia.characters.Character;
 import csci.ooad.polymorphia.characters.CharacterFactory;
+=======
+>>>>>>> Stashed changes
 import csci.ooad.polymorphia.maze.Room;
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +29,7 @@ class RoomTest {
         assertNull(room.getRandomNeighbor());
     }
 
+<<<<<<< Updated upstream
     @Test
     void testToString() {
         Room room = new Room("onlyRoom");
@@ -33,12 +37,43 @@ class RoomTest {
         room.add(frodo);
         Character ogre = CharacterFactory.createCreature("Ogre", Optional.empty());
         room.add(ogre);
+=======
+//    @Test
+//    void testToString() {
+//        Room room = new Room("onlyRoom");
+//        room.add(new Adventurer("Frodo"));
+//        room.add(new Creature("Ogre"));
+//
+//        assertTrue(room.toString().contains("onlyRoom"));
+//        assertTrue(room.toString().contains("Frodo"));
+//        assertTrue(room.toString().contains("Ogre"));
+//    }
+>>>>>>> Stashed changes
 
-        assertTrue(room.toString().contains("onlyRoom"));
-        assertTrue(room.toString().contains("Frodo"));
-        assertTrue(room.toString().contains("Ogre"));
-    }
+//    @Test
+//    void testGetHealthiestAdventurer() {
+//        // Arrange
+//        double highestHealth = 5;
+//        double lowestHealth = 3;
+//
+//        Room room = new Room("onlyRoom");
+//        Character bilbo = new Character("Bilbo", highestHealth);
+//        room.add(bilbo);
+//        room.add(new Character("Frodo", lowestHealth));
+//        Creature troll = new Creature("Troll", highestHealth);
+//        room.add(troll);
+//        room.add(new Creature("Orc", lowestHealth));
+//
+//        // Act
+//        Adventurer fittestAdventurer = room.getHealthiestAdventurer();
+//        Creature fittestCreature = room.getHealthiestCreature();
+//
+//        // Assert
+//        assertEquals(bilbo, fittestAdventurer);
+//        assertEquals(troll, fittestCreature);
+//    }
 
+<<<<<<< Updated upstream
     @Test
     void testGetHealthiestAdventurer() {
         // Arrange
@@ -83,6 +118,26 @@ class RoomTest {
         // Assert
         assertEquals(bilbo.getHealth(), highestHealth + Food.DEFAULT_FOOD_HEALTH_VALUE);
     }
+=======
+//    @Test
+//    void testHealthiestEatsFood() {
+//        // Arrange
+//        double highestHealth = 5;
+//        double lowestHealth = 3;
+//
+//        Room room = new Room("onlyRoom");
+//        Adventurer bilbo = new Adventurer("Bilbo", highestHealth);
+//        room.add(bilbo);
+//        room.add(new Adventurer("Frodo", lowestHealth));
+//        room.add(new Food("burger"));
+//
+//        // Act
+//        bilbo.doAction();
+//
+//        // Assert
+//        assertEquals(bilbo.getHealth(), highestHealth + Food.DEFAULT_FOOD_HEALTH_VALUE);
+//    }
+>>>>>>> Stashed changes
 
     @Test
     void testEatNonExistentFood() {

@@ -234,9 +234,15 @@ public class Maze {
             return this;
         }
 
+<<<<<<< Updated upstream
         private Builder addAdventurers(List<Character> characters) {
             for (Character character : characters) {
                 nextRoom().add(character);
+=======
+        private Builder addAdventurers(List<Character> adventurers) {
+            for (Character adventurer : adventurers) {
+                nextRoom().add(adventurer);
+>>>>>>> Stashed changes
             }
             return this;
         }
@@ -324,8 +330,18 @@ public class Maze {
             return this;
         }
 
+<<<<<<< Updated upstream
         public Builder addToRoom(String roomName, Character character) {
             roomMap.get(roomName).add(character);
+=======
+        public Builder addToRoom(String roomName, Character adventure) {
+            roomMap.get(roomName).add(adventure);
+            return this;
+        }
+
+        public Builder addToRoom(String roomName, Character creature) {
+            roomMap.get(roomName).add(creature);
+>>>>>>> Stashed changes
             return this;
         }
 

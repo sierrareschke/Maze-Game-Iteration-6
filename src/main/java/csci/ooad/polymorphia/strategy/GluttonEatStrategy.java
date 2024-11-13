@@ -14,16 +14,13 @@ import static csci.ooad.polymorphia.EventBus.post;
 
 public class GluttonEatStrategy implements EatStrategy {
     @Override
-    public void eat(Character character) throws NoFoodException {
+    public Command eat(Character character) throws NoFoodException {
         Room room = character.getCurrentLocation();
         List<Food> foodItems = room.getFoodItems();
         while (!foodItems.isEmpty()) {
             Food foodItem = room.removeFoodItem();
-            character.gainHealth(foodItem.getHealthValue());
-            String message = character.getName() + " just ate " + foodItem.getName();
-            post(EventType.AteSomething, message);
+            return CommandFactory.createEatCommand(character, foodItem);
         }
-//        return CommandFactory.createEatCommand(character);
     }
 }
 
