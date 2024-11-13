@@ -18,21 +18,25 @@ import static csci.ooad.polymorphia.EventBus.post;
 
 
 public class Character implements Comparable<Character> {
-    static final Double DEFAULT_INITIAL_HEALTH = 5.0;
-    static final Double HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME = 0.5;
-    static final Double HEALTH_LOST_IN_MOVING_ROOMS = 0.25;
-    private static final Logger logger = LoggerFactory.getLogger(Character.class);
-    private static final DecimalFormat formatter = new DecimalFormat("0.0");
+    static Double DEFAULT_INITIAL_HEALTH = 5.0;
+    static Double HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME = 0.5;
+    static Double HEALTH_LOST_IN_MOVING_ROOMS = 0.25;
+    private static Logger logger = LoggerFactory.getLogger(Character.class);
+    private static DecimalFormat formatter = new DecimalFormat("0.0");
     private static FightStrategy fightStrategy;
     private static EatStrategy eatStrategy;
     private static MoveStrategy moveStrategy;
     protected String name;
+    private Double health;
+    private CharacterType type;
+    private Room currentLocation;
+
 
 
     ///////////////////////////////  new section:
 
 
-    public Character(String name, Double initialHealth, FightStrategy fightStrategy, EatStrategy eatStrategy, MoveStrategy moveStrategy,CharacterType type) {
+    public Character(String name, Double initialHealth, FightStrategy fightStrategy, EatStrategy eatStrategy, MoveStrategy moveStrategy, CharacterType type) {
         this.name = name;
         this.health = initialHealth;
         this.fightStrategy = fightStrategy;
@@ -40,22 +44,10 @@ public class Character implements Comparable<Character> {
         this.moveStrategy = moveStrategy;
         this.type = type;
     }
-//
-//    public Character(String name) {
-//        this(name, DEFAULT_INITIAL_HEALTH);
-//    }
-//
-//    public Character(String name, Double initialHealth) {
-//        this.name = name;
-//        this.health = initialHealth;
-//    }
 
     public static EatStrategy getEatStrategy() {
         return eatStrategy;
     }
-
-
-    //////////////////////////////
 
     public static FightStrategy getFightStrategy() {
         return fightStrategy;
@@ -65,21 +57,6 @@ public class Character implements Comparable<Character> {
         return moveStrategy;
     }
 
-<<<<<<< Updated upstream
-=======
-
-    //////////////////////////////
-
-//    public Character(String name) {
-//        this(name, DEFAULT_INITIAL_HEALTH);
-//    }
-//
-//    public Character(String name, Double initialHealth) {
-//        this.name = name;
-//        this.health = initialHealth;
-    }
-
->>>>>>> Stashed changes
     public Room getCurrentLocation() {
         return currentLocation;
     }

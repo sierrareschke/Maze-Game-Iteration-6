@@ -3,11 +3,11 @@ package csci.ooad.polymorphia.maze;
 import csci.ooad.polymorphia.Die;
 import csci.ooad.polymorphia.Food;
 import csci.ooad.polymorphia.NoFoodException;
-import csci.ooad.polymorphia.characters.Character;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import csci.ooad.polymorphia.characters.Character;
 
 import static java.util.Collections.*;
 
@@ -34,10 +34,7 @@ public class Room {
         return characters.stream()
                 .filter(Character::isAdventurer)
                 .filter(Character::isAlive)
-<<<<<<< Updated upstream
                 .map(Character.class::cast)
-=======
->>>>>>> Stashed changes
                 .sorted()
                 .toList();
     }
@@ -46,10 +43,7 @@ public class Room {
         return characters.stream()
                 .filter(Character::isCreature)
                 .filter(Character::isAlive)
-<<<<<<< Updated upstream
                 .map(Character.class::cast)
-=======
->>>>>>> Stashed changes
                 .sorted()
                 .toList();
     }
