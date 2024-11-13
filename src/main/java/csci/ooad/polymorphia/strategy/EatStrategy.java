@@ -5,5 +5,5 @@ import csci.ooad.polymorphia.command.Command;
 import csci.ooad.polymorphia.characters.Character;
 
 public interface EatStrategy {
-    Command eat(Character character) throws NoFoodException;
+    Command eat(Character character);
 }

@@ -134,11 +134,15 @@ public class Room {
         return !foodItems.isEmpty();
     }
 
-    public Food removeFoodItem() throws NoFoodException {
-        if (foodItems.isEmpty()) {
-            throw new NoFoodException("No food in room");
+    public Food removeFoodItem() {
+        try {
+            if (foodItems.isEmpty()) {
+                throw new NoFoodException("No food in room");
+            }
+            return foodItems.removeFirst();
+        } catch(NoFoodException e) {
+            throw new RuntimeException(e);
         }
-        return foodItems.removeFirst();
     }
 
     public Boolean hasDemon() {

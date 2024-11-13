@@ -8,7 +8,7 @@ import csci.ooad.polymorphia.command.CommandFactory;
 public class CreatureEatStrategy implements EatStrategy {
 
     @Override
-    public Command eat(Character character) throws NoFoodException {
+    public Command eat(Character character) {
         // TODO - creatures should do nothing ??
         // TODO - do we need a DoNothing strategy ??
         return null;

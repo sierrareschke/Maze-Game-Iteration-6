@@ -16,7 +16,7 @@ import static csci.ooad.polymorphia.EventBus.post;
 public class DefaultEatStrategy implements EatStrategy {
 
     @Override
-    public Command eat(Character character) throws NoFoodException {
+    public Command eat(Character character) {
         Room room = character.getCurrentLocation();
         List<Food> foodItems = room.getFoodItems();
         // if there is food, the character will eat

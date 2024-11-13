@@ -8,7 +8,7 @@ import csci.ooad.polymorphia.characters.Character;
 public class DemonEatStrategy implements EatStrategy {
 
     @Override
-    public Command eat(Character demon) throws NoFoodException {
+    public Command eat(Character demon) {
         // Demon doesn't eat, it just fights
         Character healthiestAdventurer = demon.getCurrentLocation().getHealthiestAdventurer();
         if (healthiestAdventurer != null) {

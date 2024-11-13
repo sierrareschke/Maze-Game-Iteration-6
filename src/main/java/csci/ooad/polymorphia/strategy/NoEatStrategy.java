@@ -12,7 +12,7 @@ public class NoEatStrategy implements EatStrategy {
     }
 
     @Override
-    public Command eat(Character character) throws NoFoodException {
-        return null;
+    public Command eat(Character character) {
+        return CommandFactory.createNoCommand();
     }
 }

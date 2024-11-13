@@ -14,7 +14,7 @@ import static csci.ooad.polymorphia.EventBus.post;
 
 public class GluttonEatStrategy implements EatStrategy {
     @Override
-    public Command eat(Character character) throws NoFoodException {
+    public Command eat(Character character) {
         Room room = character.getCurrentLocation();
         List<Food> foodItems = room.getFoodItems();
         while (!foodItems.isEmpty()) {

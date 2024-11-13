@@ -12,7 +12,7 @@ public class CommandFactory {
 
     // Note: add another move command method if need target room passed in
 
-    public static Command createEatCommand(Character character, Food foodItem) throws NoFoodException {
+    public static Command createEatCommand(Character character, Food foodItem) {
         return null;
     }
 

@@ -130,11 +130,15 @@ public class Character implements Comparable<Character> {
 
 
 
-    public void doAction() throws NoFoodException {
+    public void doAction() {
         // Do nothing by default
-        fightStrategy.fight(this).execute();
-        moveStrategy.move(this).execute();
-        eatStrategy.eat(this).execute();
+        try {
+            fightStrategy.fight(this).execute();
+            moveStrategy.move(this).execute();
+            eatStrategy.eat(this).execute();
+        } catch(NoFoodException e){
+            throw new RuntimeException(e);
+        }
     }
 
 //    protected void move() {

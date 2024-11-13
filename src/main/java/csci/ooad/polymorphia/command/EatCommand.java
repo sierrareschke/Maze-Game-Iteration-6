@@ -18,12 +18,12 @@ public class EatCommand implements Command {
     }
 
     @Override
-    public void execute() throws NoFoodException {
+    public void execute() {
         Room room = character.getCurrentLocation();
         Food foodItem = room.removeFoodItem();
         character.gainHealth(foodItem.getHealthValue());
         String message = character.getName() + " just ate " + foodItem.getName();
         post(EventType.AteSomething, message);
-        character.getEatStrategy().eat(character);
+//        character.getEatStrategy().eat(character);
     }
 }
