@@ -3,9 +3,10 @@ package csci.ooad.polymorphia.strategy;
 import csci.ooad.polymorphia.command.Command;
 import csci.ooad.polymorphia.command.CommandFactory;
 
-public class AdventurerEatStrategy implements EatStrategy {
+public class DefaultMoveStrategy implements MoveStrategy {
+
     @Override
-    public Command eat(){
-        return CommandFactory.createCommand("eat");
+    public Command move(){
+        return CommandFactory.createCommand("move");
     }
 }

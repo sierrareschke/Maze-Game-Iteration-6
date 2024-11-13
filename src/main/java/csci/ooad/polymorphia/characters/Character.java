@@ -4,6 +4,10 @@ import csci.ooad.polymorphia.Die;
 import csci.ooad.polymorphia.EventBus;
 import csci.ooad.polymorphia.EventType;
 import csci.ooad.polymorphia.maze.Room;
+import csci.ooad.polymorphia.strategy.EatStrategy;
+import csci.ooad.polymorphia.strategy.FightStrategy;
+import csci.ooad.polymorphia.strategy.MoveStrategy;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +16,7 @@ import java.text.DecimalFormat;
 import static csci.ooad.polymorphia.EventBus.post;
 
 
-public abstract class Character implements Comparable<Character> {
+public class Character implements Comparable<Character> {
     static final Double DEFAULT_INITIAL_HEALTH = 5.0;
     static final Double HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME = 0.5;
     static final Double HEALTH_LOST_IN_MOVING_ROOMS = 0.25;
@@ -22,6 +26,38 @@ public abstract class Character implements Comparable<Character> {
     private Double health;
 
     private Room currentLocation;
+
+
+    ///////////////////////////////  new section:
+
+    private static FightStrategy fightStrategy;
+    private static EatStrategy eatStrategy;
+    private static MoveStrategy moveStrategy;
+
+
+
+    public Character(String name, Double initialHealth, FightStrategy fightStrategy, EatStrategy eatStrategy, MoveStrategy moveStrategy) {
+        this.name = name;
+        this.health = initialHealth;
+        this.fightStrategy = fightStrategy;
+        this.eatStrategy = eatStrategy;
+        this.moveStrategy = moveStrategy;
+    }
+
+    public static EatStrategy getEatStrategy() {
+        return eatStrategy;
+    }
+
+    public static FightStrategy getFightStrategy() {
+        return fightStrategy;
+    }
+
+    public static MoveStrategy getMoveStrategy() {
+        return moveStrategy;
+    }
+
+
+    //////////////////////////////
 
     public Character(String name) {
         this(name, DEFAULT_INITIAL_HEALTH);

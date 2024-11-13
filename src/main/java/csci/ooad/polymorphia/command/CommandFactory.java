@@ -6,6 +6,7 @@ import csci.ooad.polymorphia.observer.FightObserver;
 public class CommandFactory {
     public static Command createCommand(String command) {
         return switch (command) {
+            // TODO - arguments for commmands
             case "eat" -> new EatCommand();
             case "move" -> new MoveCommand();
             case "fight" -> new FightCommand();

@@ -6,12 +6,13 @@ public class EatCommand implements Command {
     private Character character;
     private Food foodItem;
 
-    public EatCommand() {
-        // Need to figure out what goes here
+    public EatCommand(Character character, Food foodItem) {
+        this.character = character;
+        this.foodItem = foodItem;
     }
 
     @Override
     public void execute() {
-        // Do something
+        character.getEatStrategy().eat(character, foodItem);
     }
 }

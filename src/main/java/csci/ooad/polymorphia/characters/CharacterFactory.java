@@ -1,5 +1,8 @@
 package csci.ooad.polymorphia.characters;
 
+import csci.ooad.polymorphia.strategy.*;
+
+
 import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -56,18 +59,40 @@ public class CharacterFactory {
                 .toList();
     }
 
-    public Adventurer createAdventurer(String name) {
-        return new Adventurer(name);
+
+
+    //////////////////////////////////////////// new below
+    static final Double DEFAULT_INITIAL_HEALTH = 5.0;
+    static final Double CREATURE_INITIAL_HEALTH = 3.0;
+    static final Double DEMON_INITIAL_HEALTH = 15.0;
+
+
+
+    public Character createAdventurer(String name) {
+        return new Character(name, DEFAULT_INITIAL_HEALTH, new AdventurerFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy());
     }
-    public Adventurer createKnight(String name) {
-        return new Knight(name);
+
+    public Character createKnight(String name) {
+        return new Character(name, DEFAULT_INITIAL_HEALTH, new KnightFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy());
     }
-    public Adventurer createCoward(String name) {
-        return new Coward(name);
+
+    public Character createGlutton(String name) {
+        return new Character(name, DEFAULT_INITIAL_HEALTH, new GluttonFightStrategy(), new GluttonEatStrategy(), new DefaultMoveStrategy());
     }
-    public Adventurer createGlutton(String name) {
-        return new Glutton(name);
+
+    public Character createCoward(String name) {
+        return new Character(name, DEFAULT_INITIAL_HEALTH, new CowardFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy());
     }
-    public Creature createCreature(String name) { return new Creature(name);}
-    public Creature createDemon(String name) { return new Demon(name);}
+
+    public Character createDemon(String name) {
+        return new Character(name, DEMON_INITIAL_HEALTH, new DemonFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy());
+    }
+
+    public Character createCreature(String name) {
+        return new Character(name, CREATURE_INITIAL_HEALTH, new CreatureFightStrategy(), new NoEatStrategy(), new DefaultMoveStrategy());
+        //return new Character(name, character -> new NoOpCommand()); // "Do nothing" for non-Demon creatures
+    }
+
+
+
 }
