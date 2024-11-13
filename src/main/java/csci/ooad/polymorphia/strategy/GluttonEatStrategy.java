@@ -9,3 +9,5 @@ public class GluttonEatStrategy implements EatStrategy {
         return CommandFactory.createCommand("eat");
     }
 }
+
+

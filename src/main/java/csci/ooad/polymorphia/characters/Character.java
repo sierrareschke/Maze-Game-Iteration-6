@@ -3,7 +3,9 @@ package csci.ooad.polymorphia.characters;
 import csci.ooad.polymorphia.Die;
 import csci.ooad.polymorphia.EventBus;
 import csci.ooad.polymorphia.EventType;
+import csci.ooad.polymorphia.command.Command;
 import csci.ooad.polymorphia.maze.Room;
+import csci.ooad.polymorphia.strategy.FightStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,6 +33,26 @@ public class Character implements Comparable<Character> {
         this.name = name;
         this.health = initialHealth;
     }
+
+
+
+    /*
+    * HOMEWORK 7 WORKSPACE
+    *
+    *
+    * */
+
+    private FightStrategy fightStrategy;
+
+    public Command getFightCommand(){
+        return fightStrategy.fight();
+    }
+
+
+
+    /*
+    *   HOMEWORK 7 WORKSPACE ENDS HERE
+    * */
 
     public Room getCurrentLocation() {
         return currentLocation;
@@ -97,6 +119,15 @@ public class Character implements Comparable<Character> {
         return false;
     }
     public Boolean isCoward() {
+        return false;
+    }
+
+    public Boolean shouldFight() {
+        if (creatureInRoomWithMe()) {
+            Command fightCommand = CommandFactory.createFightCommand(this, getStrongestOpponentInRoom());
+            fightCommand.execute();
+            return true;
+        }
         return false;
     }
 

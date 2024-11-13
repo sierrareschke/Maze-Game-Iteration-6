@@ -120,7 +120,7 @@ public class Room {
         foodItems.add(foodItem);
     }
 
-    public Adventurer getHealthiestAdventurer() {
+    public Creature getHealthiestAdventurer() {
         return getLivingAdventurers().stream().max(Comparator.naturalOrder()).get();
     }
 

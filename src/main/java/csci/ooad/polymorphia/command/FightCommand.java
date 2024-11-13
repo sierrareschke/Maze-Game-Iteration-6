@@ -1,6 +1,7 @@
 package csci.ooad.polymorphia.command;
 
 import csci.ooad.polymorphia.Die;
+import csci.ooad.polymorphia.EventBus;
 import csci.ooad.polymorphia.EventType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import csci.ooad.polymorphia.characters.Character;
 import static csci.ooad.polymorphia.EventBus.post;
 
 public class FightCommand implements Command {
+    static final Double HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME = 0.5;
     Character adventurer;
     Character opponent;
     Die dice;
@@ -23,7 +25,6 @@ public class FightCommand implements Command {
 
     @Override
     public void execute() {
-        // execute the command here
         Integer adventurerRoll = Die.rollSixSided();
         Integer creatureRoll = Die.rollSixSided();
         logger.info(adventurer + " is fighting " + opponent);
@@ -32,18 +33,24 @@ public class FightCommand implements Command {
 
         if (adventurerRoll > creatureRoll) {
             post(EventType.FightOutcome, adventurer.getName() + " won a battle against " + opponent.getName());
-            opponent.loseFightValue(adventurerRoll - creatureRoll);
+            opponent.loseFightDamage(adventurerRoll - creatureRoll);
         } else if (creatureRoll > adventurerRoll) {
             post(EventType.FightOutcome, opponent.getName() + " won a battle against " + adventurer.getName());
-            loseFightDamage(creatureRoll - adventurerRoll);
+            adventurer.loseFightDamage(creatureRoll - adventurerRoll);
         } else {
-            post(EventType.FightOutcome, this.getName() + " tied in a battle against " + opponent.getName());
+            post(EventType.FightOutcome, adventurer.getName() + " tied in a battle against " + opponent.getName());
         }
 
-        loseHealth(csci.ooad.polymorphia.characters.Character.HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME);
-        opponent.loseHealth(csci.ooad.polymorphia.characters.Character.HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME);
+        adventurer.loseHealth(HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME);
+        opponent.loseHealth(HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME);
     }
+
+
 }
+
+
+
+
 
 
 
