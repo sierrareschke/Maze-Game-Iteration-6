@@ -63,7 +63,7 @@ public class Polymorphia implements IMazeSubject, IObservable {
         return getLivingAdventurers().size();
     }
 
-    public List<Adventurer> getLivingAdventurers() {
+    public List<Character> getLivingAdventurers() {
         return maze.getLivingAdventurers();
     }
 
@@ -137,7 +137,7 @@ public class Polymorphia implements IMazeSubject, IObservable {
         return String.join("\n ", getLivingCreatures().stream().map(Object::toString).toList());
     }
 
-    public List<Creature> getLivingCreatures() {
+    public List<Character> getLivingCreatures() {
         return maze.getLivingCreatures();
     }
 

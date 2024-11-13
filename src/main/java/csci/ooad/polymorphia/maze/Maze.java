@@ -48,7 +48,7 @@ public class Maze {
         return rooms.get(rand.nextInt(rooms.size()));
     }
 
-    public List<Adventurer> getLivingAdventurers() {
+    public List<Character> getLivingAdventurers() {
         List<Adventurer> adventurers = new ArrayList<>();
         for (Room room : rooms) {
             adventurers.addAll(room.getLivingAdventurers());
@@ -56,7 +56,7 @@ public class Maze {
         return Collections.unmodifiableList(adventurers);
     }
 
-    public List<Creature> getLivingCreatures() {
+    public List<Character> getLivingCreatures() {
         List<Creature> creatures = new ArrayList<>();
         for (Room room : rooms) {
             creatures.addAll(room.getLivingCreatures());
@@ -326,13 +326,8 @@ public class Maze {
             return this;
         }
 
-        public Builder addToRoom(String roomName, Adventurer adventure) {
-            roomMap.get(roomName).add(adventure);
-            return this;
-        }
-
-        public Builder addToRoom(String roomName, Creature creature) {
-            roomMap.get(roomName).add(creature);
+        public Builder addToRoom(String roomName, Character character) {
+            roomMap.get(roomName).add(character);
             return this;
         }
 
