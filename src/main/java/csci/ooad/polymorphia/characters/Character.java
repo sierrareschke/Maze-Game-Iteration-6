@@ -25,6 +25,7 @@ public class Character implements Comparable<Character> {
     private static final DecimalFormat formatter = new DecimalFormat("0.0");
     protected String name;
     private Double health;
+    private CharacterType type;
 
     private Room currentLocation;
 
@@ -36,29 +37,19 @@ public class Character implements Comparable<Character> {
     private static MoveStrategy moveStrategy;
 
 
+    ///////////////////////////////  new section:
+    protected String name;
+    private Double health;
+    private Room currentLocation;
 
-    public Character(String name, Double initialHealth, FightStrategy fightStrategy, EatStrategy eatStrategy, MoveStrategy moveStrategy) {
+    public Character(String name, Double initialHealth, FightStrategy fightStrategy, EatStrategy eatStrategy, MoveStrategy moveStrategy,CharacterType type) {
         this.name = name;
         this.health = initialHealth;
         this.fightStrategy = fightStrategy;
         this.eatStrategy = eatStrategy;
         this.moveStrategy = moveStrategy;
+        this.type = type;
     }
-
-    public static EatStrategy getEatStrategy() {
-        return eatStrategy;
-    }
-
-    public static FightStrategy getFightStrategy() {
-        return fightStrategy;
-    }
-
-    public static MoveStrategy getMoveStrategy() {
-        return moveStrategy;
-    }
-
-
-    //////////////////////////////
 
     public Character(String name) {
         this(name, DEFAULT_INITIAL_HEALTH);
@@ -67,6 +58,21 @@ public class Character implements Comparable<Character> {
     public Character(String name, Double initialHealth) {
         this.name = name;
         this.health = initialHealth;
+    }
+
+    public static EatStrategy getEatStrategy() {
+        return eatStrategy;
+    }
+
+
+    //////////////////////////////
+
+    public static FightStrategy getFightStrategy() {
+        return fightStrategy;
+    }
+
+    public static MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 
     public Room getCurrentLocation() {
@@ -125,16 +131,22 @@ public class Character implements Comparable<Character> {
     }
 
     public Boolean isAdventurer() {
-        return false;
+        return type == CharacterType.Adventurer;
     }
     public Boolean isCreature() {
-        return false;
+        return type == CharacterType.Creature;
     }
     public Boolean isDemon() {
-        return false;
+        return type == CharacterType.Demon;
     }
     public Boolean isCoward() {
-        return false;
+        return type == CharacterType.Coward;
+    }
+    public Boolean isKnight() {
+        return type == CharacterType.Knight;
+    }
+    public Boolean isGlutton() {
+        return type == CharacterType.Glutton;
     }
 
 

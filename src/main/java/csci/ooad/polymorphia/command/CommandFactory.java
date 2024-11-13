@@ -9,7 +9,7 @@ import csci.ooad.polymorphia.characters.Character;
 
 public class CommandFactory {
 
-    public Command createMoveCommand(Character character, Room targetRoom) {
+    public static Command createMoveCommand(Character character, Room targetRoom) {
         return character.getMoveStrategy().move(character);
     }
 
@@ -20,7 +20,7 @@ public class CommandFactory {
     }
 
 
-    public Command createFightCommand(Character character, Character opponent) {
+    public static Command createFightCommand(Character character, Character opponent) {
         return character.getFightStrategy().fight(character);
     }
 

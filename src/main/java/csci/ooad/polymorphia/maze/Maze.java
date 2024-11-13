@@ -3,10 +3,8 @@ package csci.ooad.polymorphia.maze;
 import csci.ooad.polymorphia.Food;
 import csci.ooad.polymorphia.FoodFactory;
 import csci.ooad.polymorphia.NoSuchRoomException;
-import csci.ooad.polymorphia.characters.Adventurer;
 import csci.ooad.polymorphia.characters.Character;
 import csci.ooad.polymorphia.characters.CharacterFactory;
-import csci.ooad.polymorphia.characters.Creature;
 
 import java.util.*;
 
@@ -48,16 +46,16 @@ public class Maze {
         return rooms.get(rand.nextInt(rooms.size()));
     }
 
-    public List<Adventurer> getLivingAdventurers() {
-        List<Adventurer> adventurers = new ArrayList<>();
+    public List<Character> getLivingAdventurers() {
+        List<Character> adventurers = new ArrayList<>();
         for (Room room : rooms) {
             adventurers.addAll(room.getLivingAdventurers());
         }
         return Collections.unmodifiableList(adventurers);
     }
 
-    public List<Creature> getLivingCreatures() {
-        List<Creature> creatures = new ArrayList<>();
+    public List<Character> getLivingCreatures() {
+        List<Character> creatures = new ArrayList<>();
         for (Room room : rooms) {
             creatures.addAll(room.getLivingCreatures());
         }
@@ -231,14 +229,14 @@ public class Maze {
 
         public Builder createAndAddAdventurers(String... adventurerNames) {
             for (String adventurerName : adventurerNames) {
-                nextRoom().add(characterFactory.createAdventurer(adventurerName));
+                nextRoom().add(characterFactory.createAdventurer(adventurerName, Optional.empty()));
             }
             return this;
         }
 
-        private Builder addAdventurers(List<Adventurer> adventurers) {
-            for (Adventurer adventurer : adventurers) {
-                nextRoom().add(adventurer);
+        private Builder addAdventurers(List<Character> characters) {
+            for (Character character : characters) {
+                nextRoom().add(character);
             }
             return this;
         }
@@ -262,15 +260,15 @@ public class Maze {
             return this;
         }
 
-        public Builder addAdventurers(Adventurer... adventurers) {
-            for (Adventurer adventurer : adventurers) {
+        public Builder addAdventurers(Character... adventurers) {
+            for (Character adventurer : adventurers) {
                 nextRoom().add(adventurer);
             }
             return this;
         }
 
-        private Builder addCreatures(List<Creature> creatures) {
-            for (Creature creature : creatures) {
+        private Builder addCreatures(List<Character> creatures) {
+            for (Character creature : creatures) {
                 nextRoom().add(creature);
             }
             return this;
@@ -283,7 +281,7 @@ public class Maze {
 
         public Builder createAndAddCreatures(String... names) {
             for (String name : names) {
-                nextRoom().add(characterFactory.createCreature(name));
+                nextRoom().add(characterFactory.createCreature(name, Optional.empty()));
             }
             return this;
         }
@@ -319,20 +317,15 @@ public class Maze {
             return this;
         }
 
-        public Builder addCreatures(Creature... creatures) {
-            for (Creature creature : creatures) {
+        public Builder addCreatures(Character... creatures) {
+            for (Character creature : creatures) {
                 nextRoom().add(creature);
             }
             return this;
         }
 
-        public Builder addToRoom(String roomName, Adventurer adventure) {
-            roomMap.get(roomName).add(adventure);
-            return this;
-        }
-
-        public Builder addToRoom(String roomName, Creature creature) {
-            roomMap.get(roomName).add(creature);
+        public Builder addToRoom(String roomName, Character character) {
+            roomMap.get(roomName).add(character);
             return this;
         }
 
@@ -343,7 +336,7 @@ public class Maze {
 
         public Builder createAndAddKnights(String... names) {
             for (String name : names) {
-                nextRoom().add(characterFactory.createKnight(name));
+                nextRoom().add(characterFactory.createKnight(name, Optional.empty()));
             }
             return this;
         }
@@ -357,7 +350,7 @@ public class Maze {
 
         public Builder createAndAddCowards(String... names) {
             for (String name : names) {
-                nextRoom().add(characterFactory.createCoward(name));
+                nextRoom().add(characterFactory.createCoward(name, Optional.empty()));
             }
             return this;
         }
