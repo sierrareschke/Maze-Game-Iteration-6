@@ -1,34 +1,29 @@
 package csci.ooad.polymorphia.command;
 
 import csci.ooad.polymorphia.Food;
+import csci.ooad.polymorphia.NoFoodException;
 import csci.ooad.polymorphia.characters.Character;
+import csci.ooad.polymorphia.maze.Room;
 import csci.ooad.polymorphia.observer.FightObserver;
 import csci.ooad.polymorphia.characters.Character;
 
 public class CommandFactory {
 
     public Command createMoveCommand(Character character, Room targetRoom) {
-        return character.getMoveStrategy().getMoveCommand(character, targetRoom);
+        return character.getMoveStrategy().move(character);
     }
 
-    public static Command createMoveCommand(Character character) {
-        return new MoveCommand(character);
+    // Note: add another move command method if need target room passed in
+
+    public Command createEatCommand(Character character) throws NoFoodException {
+        return character.getEatStrategy().eat(character);
     }
 
-    public Command createEatCommand(Character character) {
-        return character.getEatStrategy().getEatCommand(character);
-    }
-
-    public static Command createEatCommand(Character character, Food foodItem) {
-        return new EatCommand(character, foodItem);
-    }
 
     public Command createFightCommand(Character character, Character opponent) {
-        return character.getFightStrategy().fight(character, opponent);
-
-    public static Command createFightCommand(Character c1, Character c2) {
-        return new FightCommand(c1, c2);
+        return character.getFightStrategy().fight(character);
     }
+
 
 
 

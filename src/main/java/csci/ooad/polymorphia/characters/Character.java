@@ -137,56 +137,27 @@ public class Character implements Comparable<Character> {
         return false;
     }
 
-//    public Boolean shouldFight() {
-//        if (creatureInRoomWithMe()) {
-//            Command fightCommand = CommandFactory.createFightCommand(this, getStrongestOpponentInRoom());
-//            fightCommand.execute();
-//            return true;
-//        }
-//        return false;
-//    }
 
-    public void fight(Character opponent) {
-        Integer adventurerRoll = Die.rollSixSided();
-        Integer creatureRoll = Die.rollSixSided();
-        logger.info(getName() + " is fighting " + opponent);
-
-        logger.info(getName() + " rolled " + adventurerRoll);
-        logger.info(opponent + " rolled " + creatureRoll);
-
-        if (adventurerRoll > creatureRoll) {
-            post(EventType.FightOutcome, this.getName() + " won a battle against " + opponent.getName());
-            opponent.loseFightDamage(adventurerRoll - creatureRoll);
-        } else if (creatureRoll > adventurerRoll) {
-            post(EventType.FightOutcome, opponent.getName() + " won a battle against " + this.getName());
-            loseFightDamage(creatureRoll - adventurerRoll);
-        } else {
-            post(EventType.FightOutcome, this.getName() + " tied in a battle against " + opponent.getName());
-        }
-
-        loseHealth(Character.HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME);
-        opponent.loseHealth(Character.HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME);
-    }
 
     public void doAction() {
         // Do nothing by default
     }
 
-    protected void move() {
-        Room nextLocation = getCurrentLocation().getRandomNeighbor();
-        if (nextLocation != null) {
-            String message = getName() + " moved from " + getCurrentLocation().getName() + " to " + nextLocation.getName();
-            logger.info(message);
-            post(EventType.Moved, message);
-            nextLocation.enter(this);
-            loseHealth(HEALTH_LOST_IN_MOVING_ROOMS);
-        } else {
-            logger.warn("{} has no neighbors!", getCurrentLocation().getName());
-        }
-    }
+//    protected void move() {
+//        Room nextLocation = getCurrentLocation().getRandomNeighbor();
+//        if (nextLocation != null) {
+//            String message = getName() + " moved from " + getCurrentLocation().getName() + " to " + nextLocation.getName();
+//            logger.info(message);
+//            post(EventType.Moved, message);
+//            nextLocation.enter(this);
+//            loseHealth(HEALTH_LOST_IN_MOVING_ROOMS);
+//        } else {
+//            logger.warn("{} has no neighbors!", getCurrentLocation().getName());
+//        }
+//    }
 
 
-    protected void gainHealth(double healthValue) {
+    public void gainHealth(double healthValue) {
         this.health += healthValue;
         logger.info("{} gained health: {}", getName(), formatter.format(getHealth()));
     }
