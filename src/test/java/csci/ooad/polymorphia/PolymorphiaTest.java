@@ -1,9 +1,5 @@
 package csci.ooad.polymorphia;
-
-<<<<<<< Updated upstream
 import csci.ooad.polymorphia.characters.Character;
-=======
->>>>>>> Stashed changes
 import csci.ooad.polymorphia.characters.CharacterFactory;
 
 import csci.ooad.polymorphia.maze.Maze;
@@ -102,7 +98,6 @@ public class PolymorphiaTest {
         assertTrue(adventureWinRatio > 0.1);
     }
 
-<<<<<<< Updated upstream
     @Test
     void testIndividualRoomCreation() throws NoSuchRoomException {
         Character adventure = CharacterFactory.createAdventurer("Frodo", Optional.empty());
@@ -117,7 +112,7 @@ public class PolymorphiaTest {
         assertTrue(twoRoomMaze.getRoom("initial").hasLivingAdventurers());
         assertTrue(twoRoomMaze.getRoom("final").hasLivingCreatures());
     }
-=======
+
 //    @Test
 //    void testIndividualRoomCreation() throws NoSuchRoomException {
 //        Adventurer adventure = new Adventurer("Frodo");
@@ -132,7 +127,6 @@ public class PolymorphiaTest {
 //        assertTrue(twoRoomMaze.getRoom("initial").hasLivingAdventurers());
 //        assertTrue(twoRoomMaze.getRoom("final").hasLivingCreatures());
 //    }
->>>>>>> Stashed changes
 
 
     @Test

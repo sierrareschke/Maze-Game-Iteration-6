@@ -21,6 +21,7 @@ public class GluttonEatStrategy implements EatStrategy {
             Food foodItem = room.removeFoodItem();
             return CommandFactory.createEatCommand(character, foodItem);
         }
+        return CommandFactory.createNoCommand();
     }
 }
 

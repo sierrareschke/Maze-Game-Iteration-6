@@ -5,12 +5,14 @@ import csci.ooad.polymorphia.characters.Character;
 import csci.ooad.polymorphia.command.Command;
 import csci.ooad.polymorphia.command.CommandFactory;
 
-public class CreatureEatStrategy implements EatStrategy {
+public class NoEatStrategy implements EatStrategy {
+    Character character;
+    public NoEatStrategy(Character character) {
+        this.character = character;
+    }
 
     @Override
     public Command eat(Character character) throws NoFoodException {
-        // TODO - creatures should do nothing ??
-        // TODO - do we need a DoNothing strategy ??
         return null;
     }
 }

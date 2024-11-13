@@ -57,7 +57,8 @@ class CharacterTest {
     @Test
     void testFightingMandatoryLossOfHalfAPoint() {
         Character ogre = CharacterFactory.createCreature("Ogre", Optional.empty());
-        joe.fight(ogre);
+//        joe.fight(ogre);
+        joe.getFightStrategy().fight(ogre);
         // Joe should have lost 0.5 health and he started with a integer health value
         // of 5.0. After the fight he should have 4.5 health. Or 3.5, or 2.5, etc. depending
         // upon the outcome of the fight. So, we just check to make sure the health is x.5
@@ -95,7 +96,7 @@ class CharacterTest {
         Character creature = CharacterFactory.createCreature("Creature", Optional.empty());
 
         double initialHealth = adventurer.getHealth();
-        adventurer.fight(creature);
+        adventurer.getFightStrategy().fight(creature);
 
         assertNotEquals(initialHealth, adventurer.getHealth());
     }

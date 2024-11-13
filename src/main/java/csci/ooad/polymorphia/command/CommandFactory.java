@@ -21,6 +21,10 @@ public class CommandFactory {
         return new FightCommand(character, opponent);
     }
 
+    public static Command createNoCommand(){
+        return new NoCommand();
+    }
+
 
 
 

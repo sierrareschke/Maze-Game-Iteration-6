@@ -32,10 +32,6 @@ public class Character implements Comparable<Character> {
     private Room currentLocation;
 
 
-
-    ///////////////////////////////  new section:
-
-
     public Character(String name, Double initialHealth, FightStrategy fightStrategy, EatStrategy eatStrategy, MoveStrategy moveStrategy, CharacterType type) {
         this.name = name;
         this.health = initialHealth;

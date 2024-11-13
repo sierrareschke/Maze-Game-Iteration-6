@@ -1,10 +1,6 @@
 package csci.ooad.polymorphia;
-
-<<<<<<< Updated upstream
 import csci.ooad.polymorphia.characters.Character;
 import csci.ooad.polymorphia.characters.CharacterFactory;
-=======
->>>>>>> Stashed changes
 import csci.ooad.polymorphia.maze.Room;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +25,6 @@ class RoomTest {
         assertNull(room.getRandomNeighbor());
     }
 
-<<<<<<< Updated upstream
     @Test
     void testToString() {
         Room room = new Room("onlyRoom");
@@ -37,7 +32,7 @@ class RoomTest {
         room.add(frodo);
         Character ogre = CharacterFactory.createCreature("Ogre", Optional.empty());
         room.add(ogre);
-=======
+    }
 //    @Test
 //    void testToString() {
 //        Room room = new Room("onlyRoom");
@@ -48,7 +43,6 @@ class RoomTest {
 //        assertTrue(room.toString().contains("Frodo"));
 //        assertTrue(room.toString().contains("Ogre"));
 //    }
->>>>>>> Stashed changes
 
 //    @Test
 //    void testGetHealthiestAdventurer() {
@@ -73,7 +67,6 @@ class RoomTest {
 //        assertEquals(troll, fittestCreature);
 //    }
 
-<<<<<<< Updated upstream
     @Test
     void testGetHealthiestAdventurer() {
         // Arrange
@@ -118,7 +111,7 @@ class RoomTest {
         // Assert
         assertEquals(bilbo.getHealth(), highestHealth + Food.DEFAULT_FOOD_HEALTH_VALUE);
     }
-=======
+
 //    @Test
 //    void testHealthiestEatsFood() {
 //        // Arrange
@@ -137,7 +130,7 @@ class RoomTest {
 //        // Assert
 //        assertEquals(bilbo.getHealth(), highestHealth + Food.DEFAULT_FOOD_HEALTH_VALUE);
 //    }
->>>>>>> Stashed changes
+
 
     @Test
     void testEatNonExistentFood() {

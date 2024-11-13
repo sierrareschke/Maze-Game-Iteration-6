@@ -17,5 +17,4 @@ public class DemonEatStrategy implements EatStrategy {
             return CommandFactory.createMoveCommand(demon);
         }
     }
-    }
 }
