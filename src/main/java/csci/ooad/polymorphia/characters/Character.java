@@ -3,6 +3,7 @@ package csci.ooad.polymorphia.characters;
 import csci.ooad.polymorphia.Die;
 import csci.ooad.polymorphia.EventBus;
 import csci.ooad.polymorphia.EventType;
+import csci.ooad.polymorphia.NoFoodException;
 import csci.ooad.polymorphia.command.Command;
 import csci.ooad.polymorphia.maze.Room;
 import csci.ooad.polymorphia.strategy.EatStrategy;
@@ -129,8 +130,11 @@ public class Character implements Comparable<Character> {
 
 
 
-    public void doAction() {
+    public void doAction() throws NoFoodException {
         // Do nothing by default
+        fightStrategy.fight(this).execute();
+        moveStrategy.move(this).execute();
+        eatStrategy.eat(this).execute();
     }
 
 //    protected void move() {
