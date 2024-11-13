@@ -16,17 +16,15 @@ import static csci.ooad.polymorphia.EventBus.post;
 public class DefaultEatStrategy implements EatStrategy {
 
     @Override
-    public Command eat(Character character) throws NoFoodException {
+    public void eat(Character character) throws NoFoodException {
         Room room = character.getCurrentLocation();
         List<Food> foodItems = room.getFoodItems();
         if (!foodItems.isEmpty()) {
             Food foodItem = room.removeFoodItem();
             character.gainHealth(foodItem.getHealthValue());
             String message = character.getName() + " just ate " + foodItem.getName();
-            // logger ??
-            //logger.info(message);
             post(EventType.AteSomething, message);
         }
-        return CommandFactory.createEatCommand(character);
+        // return CommandFactory.createEatCommand(character);
     }
 }

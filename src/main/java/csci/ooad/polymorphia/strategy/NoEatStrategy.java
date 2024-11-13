@@ -8,7 +8,7 @@ import csci.ooad.polymorphia.characters.Character;
 public class NoEatStrategy implements EatStrategy {
 
     @Override
-    public Command eat(Character character) throws NoFoodException {
-        return CommandFactory.createEatCommand(character);
+    public void eat(Character character) throws NoFoodException {
+//        return CommandFactory.createEatCommand(character);
     }
 }
