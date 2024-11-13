@@ -4,6 +4,9 @@ import csci.ooad.polymorphia.maze.Maze;
 import csci.ooad.polymorphia.NoSuchRoomException;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+import java.util.OptionalLong;
+
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,8 +15,8 @@ public class CowardTest {
     void testRunning() throws NoSuchRoomException {
         // Arrange - put creature in room with two adventurers
         Double initialHealth = 5.0;
-        Adventurer coward = new Coward("Coward", initialHealth);
-        Creature dragon = new Creature("Dragon");
+        Character coward = CharacterFactory.createCoward("Coward", Optional.of(initialHealth));
+        Character dragon = CharacterFactory.createCreature("Dragon", Optional.empty());
         Maze twoRoomMaze = Maze.getNewBuilder()
                 .createFullyConnectedRooms("initial", "final")
                 .addToRoom("initial", coward)
@@ -32,8 +35,9 @@ public class CowardTest {
     @Test
     void testFighting() {
         // Arrange - put creature in room with two adventurers
-        Adventurer coward = new Coward("Coward");
-        Creature satan = new Demon("Satan");
+        Character coward = CharacterFactory.createCoward("Coward", Optional.empty());
+        Character satan = CharacterFactory.createDemon("Demon");
+        Double satanInitialHealth = satan.getHealth();
         Maze.getNewBuilder()
                 .createFullyConnectedRooms("initial", "final")
                 .addToRoom("initial", coward)
@@ -44,6 +48,6 @@ public class CowardTest {
         coward.doAction();
 
         // Assert – the coward ran to the other room
-        assertNotEquals(Demon.INITIAL_HEATH, satan.getHealth());
+        assertNotEquals(satanInitialHealth, satan.getHealth());
     }
 }

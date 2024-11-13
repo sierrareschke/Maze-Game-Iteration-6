@@ -3,8 +3,6 @@ package csci.ooad.polymorphia.maze;
 import csci.ooad.polymorphia.Die;
 import csci.ooad.polymorphia.Food;
 import csci.ooad.polymorphia.NoFoodException;
-import csci.ooad.polymorphia.characters.Adventurer;
-import csci.ooad.polymorphia.characters.Creature;
 import csci.ooad.polymorphia.characters.Character;
 
 import java.util.ArrayList;
@@ -28,20 +26,20 @@ public class Room {
         return name;
     }
 
-    public List<Adventurer> getLivingAdventurers() {
+    public List<Character> getLivingAdventurers() {
         return characters.stream()
                 .filter(Character::isAdventurer)
                 .filter(Character::isAlive)
-                .map(Adventurer.class::cast)
+                .map(Character.class::cast)
                 .sorted()
                 .toList();
     }
 
-    public List<Creature> getLivingCreatures() {
+    public List<Character> getLivingCreatures() {
         return characters.stream()
                 .filter(Character::isCreature)
                 .filter(Character::isAlive)
-                .map(Creature.class::cast)
+                .map(Character.class::cast)
                 .sorted()
                 .toList();
     }
@@ -120,11 +118,11 @@ public class Room {
         foodItems.add(foodItem);
     }
 
-    public Adventurer getHealthiestAdventurer() {
+    public Character getHealthiestAdventurer() {
         return getLivingAdventurers().stream().max(Comparator.naturalOrder()).get();
     }
 
-    public Creature getHealthiestCreature() {
+    public Character getHealthiestCreature() {
         return getLivingCreatures().stream().max(Comparator.naturalOrder()).get();
     }
 

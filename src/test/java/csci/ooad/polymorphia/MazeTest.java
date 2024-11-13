@@ -1,9 +1,7 @@
 package csci.ooad.polymorphia;
 
-import csci.ooad.polymorphia.characters.Adventurer;
 import csci.ooad.polymorphia.characters.Character;
 import csci.ooad.polymorphia.characters.CharacterFactory;
-import csci.ooad.polymorphia.characters.Creature;
 import csci.ooad.polymorphia.maze.Maze;
 import csci.ooad.polymorphia.maze.Room;
 import org.junit.jupiter.api.Test;
@@ -12,6 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Optional;
 
 class MazeTest {
     private static final Logger logger = LoggerFactory.getLogger(MazeTest.class);
@@ -70,8 +70,8 @@ class MazeTest {
 
     @Test
     void testIndividualRoomCreation() throws NoSuchRoomException {
-        Character adventure = CharacterFactory.createAdventurer("Frodo");
-        Character creature = CharacterFactory.createCreature("Ogre");
+        Character adventure = CharacterFactory.createAdventurer("Frodo", Optional.empty());
+        Character creature = CharacterFactory.createCreature("Ogre", Optional.empty());
         Maze twoRoomMaze = Maze.getNewBuilder()
                 .createFullyConnectedRooms("initial", "final")
                 .addToRoom("initial", adventure)

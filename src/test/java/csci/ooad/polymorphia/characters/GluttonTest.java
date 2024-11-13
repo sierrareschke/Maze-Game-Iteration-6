@@ -13,7 +13,7 @@ public class GluttonTest {
     void testEating() {
         // Arrange
         Double initialHealth = 3.0;
-        Adventurer glutton = new Glutton("Glutton", initialHealth);
+        Character glutton = CharacterFactory.createGlutton("Brad");
         Maze.getNewBuilder()
                 .createFullyConnectedRooms(1)
                 .addAdventurers(glutton)
@@ -31,8 +31,9 @@ public class GluttonTest {
     @Test
     void testFighting() throws NoSuchRoomException {
         // Arrange - put Demon in room with Glutton
-        Adventurer glutton = new Glutton("Glutton");
-        Creature satan = new Demon("Satan");
+        Character glutton = CharacterFactory.createGlutton("Charlie");
+        Character satan = CharacterFactory.createDemon("Demon");
+        Double satanInitialHealth = satan.getHealth();
         Food steak = new Food("Steak");
         Maze twoRoomMaze = Maze.getNewBuilder()
                 .createFullyConnectedRooms("initial", "final")
@@ -45,7 +46,7 @@ public class GluttonTest {
         glutton.doAction();
 
         // Assert – the coward ran to the other room
-        assertNotEquals(Demon.INITIAL_HEATH, satan.getHealth());
+        assertNotEquals(satanInitialHealth, satan.getHealth());
         assertTrue(twoRoomMaze.getRoom("initial").hasFood());
     }
 }

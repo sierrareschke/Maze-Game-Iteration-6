@@ -2,10 +2,12 @@ package csci.ooad.polymorphia;
 
 import csci.ooad.layout.intf.IMazeObserver;
 import csci.ooad.layout.intf.MazeObserver;
-import csci.ooad.polymorphia.characters.Creature;
+import csci.ooad.polymorphia.characters.Character;
+import csci.ooad.polymorphia.characters.CharacterFactory;
 import csci.ooad.polymorphia.maze.Maze;
 import csci.ooad.polymorphia.observer.AudibleObserver;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -166,8 +168,10 @@ public class GameObserverTest {
         // Assert
         assertTrue(polymorphia.isOver());
         if (polymorphia.hasLivingCreatures()) {
-            Creature creature = polymorphia.getLivingCreatures().getFirst();
-            assertTrue(creature.getHealth() < Creature.DEFAULT_INITIAL_HEALTH);
+            Character newCreature = CharacterFactory.createCreature("Ogre", Optional.empty());
+            Double creatureInitialHealth = newCreature.getHealth();
+            Character creature = polymorphia.getLivingCreatures().getFirst();
+            assertTrue(creature.getHealth() < creatureInitialHealth);
         }
     }
 

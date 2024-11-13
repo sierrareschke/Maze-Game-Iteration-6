@@ -2,14 +2,13 @@ package csci.ooad.polymorphia.stepdefs
 
 import csci.ooad.polymorphia.EventType
 import csci.ooad.polymorphia.characters.Adventurer
-import csci.ooad.polymorphia.characters.Creature
+
 import csci.ooad.polymorphia.observer.AteFoodObserver
 import csci.ooad.polymorphia.observer.DeathObserver
 import csci.ooad.polymorphia.observer.FightObserver
 import csci.ooad.polymorphia.observer.GameOverObserver
 import csci.ooad.polymorphia.observer.LostHealthObserver
 import csci.ooad.polymorphia.observer.MovedObserver
-import io.cucumber.java.en.And
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
 

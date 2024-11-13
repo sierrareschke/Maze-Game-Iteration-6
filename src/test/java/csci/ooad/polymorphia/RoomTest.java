@@ -1,9 +1,11 @@
 package csci.ooad.polymorphia;
 
-import csci.ooad.polymorphia.characters.Adventurer;
-import csci.ooad.polymorphia.characters.Creature;
+import csci.ooad.polymorphia.characters.Character;
+import csci.ooad.polymorphia.characters.CharacterFactory;
 import csci.ooad.polymorphia.maze.Room;
 import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,8 +29,10 @@ class RoomTest {
     @Test
     void testToString() {
         Room room = new Room("onlyRoom");
-        room.add(new Adventurer("Frodo"));
-        room.add(new Creature("Ogre"));
+        Character frodo = CharacterFactory.createAdventurer("Frodo", Optional.empty());
+        room.add(frodo);
+        Character ogre = CharacterFactory.createCreature("Ogre", Optional.empty());
+        room.add(ogre);
 
         assertTrue(room.toString().contains("onlyRoom"));
         assertTrue(room.toString().contains("Frodo"));
@@ -38,20 +42,22 @@ class RoomTest {
     @Test
     void testGetHealthiestAdventurer() {
         // Arrange
-        double highestHealth = 5;
-        double lowestHealth = 3;
+        double highestHealth = 5.0;
+        double lowestHealth = 3.0;
 
         Room room = new Room("onlyRoom");
-        Adventurer bilbo = new Adventurer("Bilbo", highestHealth);
+        Character bilbo = CharacterFactory.createAdventurer("Bilbo", Optional.of(highestHealth));
         room.add(bilbo);
-        room.add(new Adventurer("Frodo", lowestHealth));
-        Creature troll = new Creature("Troll", highestHealth);
+        Character frodo = CharacterFactory.createAdventurer("Frodo", Optional.of(lowestHealth));
+        room.add(frodo);
+        Character troll = CharacterFactory.createCreature("Troll", Optional.of(highestHealth));
         room.add(troll);
-        room.add(new Creature("Orc", lowestHealth));
+        Character orc = CharacterFactory.createCreature("Orc", Optional.of(lowestHealth));
+        room.add(orc);
 
         // Act
-        Adventurer fittestAdventurer = room.getHealthiestAdventurer();
-        Creature fittestCreature = room.getHealthiestCreature();
+        Character fittestAdventurer = room.getHealthiestAdventurer();
+        Character fittestCreature = room.getHealthiestCreature();
 
         // Assert
         assertEquals(bilbo, fittestAdventurer);
@@ -65,9 +71,10 @@ class RoomTest {
         double lowestHealth = 3;
 
         Room room = new Room("onlyRoom");
-        Adventurer bilbo = new Adventurer("Bilbo", highestHealth);
+        Character bilbo = CharacterFactory.createAdventurer("Bilbo", Optional.of(highestHealth));
         room.add(bilbo);
-        room.add(new Adventurer("Frodo", lowestHealth));
+        Character frodo = CharacterFactory.createAdventurer("Frodo", Optional.of(lowestHealth));
+        room.add(frodo);
         room.add(new Food("burger"));
 
         // Act

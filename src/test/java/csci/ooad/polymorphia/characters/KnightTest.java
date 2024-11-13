@@ -3,6 +3,8 @@ package csci.ooad.polymorphia.characters;
 import csci.ooad.polymorphia.maze.Maze;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class KnightTest {
@@ -13,9 +15,9 @@ public class KnightTest {
     void testFighting() {
         // Arrange - put creature in room with two adventurers
         Double lowHealth = 2.0;
-        Character strongMan = CharacterFactory.createKnight("StrongKnight");
-        Character weakKnight = CharacterFactory.createKnight("WeakKnight");
-        Character creature = CharacterFactory.createCreature("Ogre");
+        Character strongMan = CharacterFactory.createKnight("StrongKnight", Optional.empty());
+        Character weakKnight = CharacterFactory.createKnight("WeakKnight", Optional.of(lowHealth));
+        Character creature = CharacterFactory.createCreature("Ogre", Optional.empty());
         Maze.getNewBuilder()
                 .createRoom("only room")
                 .addAdventurers(strongMan)
