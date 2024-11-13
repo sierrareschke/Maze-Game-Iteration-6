@@ -1,18 +1,19 @@
 package csci.ooad.polymorphia.command;
 
 import csci.ooad.polymorphia.Food;
+import csci.ooad.polymorphia.characters.Character;
+
 
 public class EatCommand implements Command {
     private Character character;
-    private Food foodItem;
+    // TODO - pass room or food item to EatCommand ?
 
-    public EatCommand(Character character, Food foodItem) {
+    public EatCommand(Character character) {
         this.character = character;
-        this.foodItem = foodItem;
     }
 
     @Override
     public void execute() {
-        character.getEatStrategy().eat(character, foodItem);
+        character.getEatStrategy().eat(character);
     }
 }

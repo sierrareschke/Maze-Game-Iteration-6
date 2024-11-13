@@ -28,6 +28,10 @@ public class Room {
         return name;
     }
 
+    public List<Food> getFoodItems() {
+        return foodItems;
+    }
+
     public List<Adventurer> getLivingAdventurers() {
         return characters.stream()
                 .filter(Character::isAdventurer)
