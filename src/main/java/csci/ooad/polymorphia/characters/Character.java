@@ -38,9 +38,7 @@ public class Character implements Comparable<Character> {
 
 
     ///////////////////////////////  new section:
-    protected String name;
-    private Double health;
-    private Room currentLocation;
+
 
     public Character(String name, Double initialHealth, FightStrategy fightStrategy, EatStrategy eatStrategy, MoveStrategy moveStrategy,CharacterType type) {
         this.name = name;
@@ -50,15 +48,15 @@ public class Character implements Comparable<Character> {
         this.moveStrategy = moveStrategy;
         this.type = type;
     }
-
-    public Character(String name) {
-        this(name, DEFAULT_INITIAL_HEALTH);
-    }
-
-    public Character(String name, Double initialHealth) {
-        this.name = name;
-        this.health = initialHealth;
-    }
+//
+//    public Character(String name) {
+//        this(name, DEFAULT_INITIAL_HEALTH);
+//    }
+//
+//    public Character(String name, Double initialHealth) {
+//        this.name = name;
+//        this.health = initialHealth;
+//    }
 
     public static EatStrategy getEatStrategy() {
         return eatStrategy;

@@ -7,14 +7,8 @@ import csci.ooad.polymorphia.maze.Room;
 
 public class AdventurerFightStrategy implements FightStrategy {
 
-    private final Character adventurer;
-
-    public AdventurerFightStrategy(Character adventurer) {
-        this.adventurer = adventurer;
-    }
-
     @Override
-    public Command fight() {
+    public Command fight(Character adventurer) {
         Room currentRoom = adventurer.getCurrentLocation();
         Boolean creatureInRoomWithMe = currentRoom.hasLivingCreatures();
         Boolean iAmHealthiestInRoom = currentRoom.getHealthiestAdventurer() == adventurer;

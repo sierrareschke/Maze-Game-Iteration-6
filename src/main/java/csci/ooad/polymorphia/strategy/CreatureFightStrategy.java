@@ -6,8 +6,7 @@ import csci.ooad.polymorphia.command.CommandFactory;
 public class CreatureFightStrategy implements FightStrategy {
 
     @Override
-    public Command fight(){
+    public Command fight(Character character){
         // TODO - creature does not fight
-        return CommandFactory.createCommand("fight");
     }
 }

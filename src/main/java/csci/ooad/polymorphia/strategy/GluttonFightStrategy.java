@@ -8,14 +8,8 @@ import csci.ooad.polymorphia.maze.Room;
 
 public class GluttonFightStrategy implements FightStrategy {
 
-    private final Character glutton;
-
-    public GluttonFightStrategy(Character glutton) {
-        this.glutton = glutton;
-    }
-
     @Override
-    public Command fight() {
+    public Command fight(Character glutton) {
         Room currentRoom = glutton.getCurrentLocation();
         Boolean isDemonPresent = currentRoom.hasDemon();
         Boolean isFoodPresent = currentRoom.hasFood();

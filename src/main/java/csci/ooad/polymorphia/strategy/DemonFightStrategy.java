@@ -7,14 +7,9 @@ import csci.ooad.polymorphia.command.Command;
 import csci.ooad.polymorphia.command.CommandFactory;
 
 public class DemonFightStrategy implements FightStrategy {
-    private final Character demon;
-
-    public DemonFightStrategy(Character demon) {
-        this.demon = demon;
-    }
 
     @Override
-    public Command fight() {
+    public Command fight(Character demon) {
         Character healthiestAdventurer = demon.getCurrentLocation().getHealthiestAdventurer();
         if (healthiestAdventurer != null) {
             return CommandFactory.createFightCommand(demon, healthiestAdventurer);

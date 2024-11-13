@@ -7,14 +7,8 @@ import csci.ooad.polymorphia.maze.Room;
 
 public class CowardFightStrategy implements FightStrategy {
 
-    private final Character coward;
-
-    public CowardFightStrategy(Character coward) {
-        this.coward = coward;
-    }
-
     @Override
-    public Command fight() {
+    public Command fight(Character coward) {
         Room currentRoom = coward.getCurrentLocation();
         Boolean cannotMove = currentRoom.getNeighbors().isEmpty();
         Boolean isDemonPresent = currentRoom.hasDemon();
