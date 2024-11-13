@@ -11,6 +11,6 @@ public class CreatureEatStrategy implements EatStrategy {
     public Command eat(Character character) throws NoFoodException {
         // TODO - creatures should do nothing ??
         // TODO - do we need a DoNothing strategy ??
-        return CommandFactory.createEatCommand(character);
+        return CommandFactory.createEatCommand(character, foodItem);
     }
 }
