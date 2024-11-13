@@ -1,10 +1,12 @@
 package csci.ooad.polymorphia.characters;
 
-import csci.ooad.polymorphia.strategy.*;
 
+import csci.ooad.polymorphia.strategy.*;
+import csci.ooad.polymorphia.characters.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 public class CharacterFactory {
@@ -19,19 +21,16 @@ public class CharacterFactory {
     public static String[] CREATURE_NAMES = new String[]{"Dragon", "Ogre", "Orc", "Shelob", "Troll", "Evil Wizard"};
     public static String[] DEMON_NAMES = new String[]{"Satan", "Beelzebub", "Devil", "Incubus", "Lucifer", "Succubus"};
 
-<<<<<<< Updated upstream
     public static Character createAdventurer(String name, Optional<Double> healthInput) {
         Double health = healthInput.orElse(DEFAULT_INITIAL_HEALTH);
         return new Character(name, health, new AdventurerFightStrategy(), new DefaultEatStrategy(), new DefaultMoveStrategy());
-=======
     Random random = new Random();
 
-    public List<Character> createNumberOfAdventurers(Integer numAdventurers) {
+    public List<Character> createNumberOfAdventurers(int numAdventurers) {
         return IntStream.range(0, numAdventurers)
                 .mapToObj(i -> new Character(ADVENTURER_NAMES[i % ADVENTURER_NAMES.length]))
                 .map(Adventurer.class::cast)
                 .toList();
->>>>>>> Stashed changes
     }
 
     public static Character createKnight(String name, Optional<Double> healthInput) {

@@ -73,8 +73,6 @@ public class Character implements Comparable<Character> {
         return moveStrategy;
     }
 
-<<<<<<< Updated upstream
-=======
 
     //////////////////////////////
 
@@ -87,7 +85,6 @@ public class Character implements Comparable<Character> {
 //        this.health = initialHealth;
     }
 
->>>>>>> Stashed changes
     public Room getCurrentLocation() {
         return currentLocation;
     }
