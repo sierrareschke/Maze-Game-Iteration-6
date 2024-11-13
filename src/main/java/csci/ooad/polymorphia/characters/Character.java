@@ -3,6 +3,7 @@ package csci.ooad.polymorphia.characters;
 import csci.ooad.polymorphia.Die;
 import csci.ooad.polymorphia.EventBus;
 import csci.ooad.polymorphia.EventType;
+import csci.ooad.polymorphia.command.Command;
 import csci.ooad.polymorphia.maze.Room;
 import csci.ooad.polymorphia.strategy.EatStrategy;
 import csci.ooad.polymorphia.strategy.FightStrategy;
@@ -135,6 +136,15 @@ public class Character implements Comparable<Character> {
     public Boolean isCoward() {
         return false;
     }
+
+//    public Boolean shouldFight() {
+//        if (creatureInRoomWithMe()) {
+//            Command fightCommand = CommandFactory.createFightCommand(this, getStrongestOpponentInRoom());
+//            fightCommand.execute();
+//            return true;
+//        }
+//        return false;
+//    }
 
     public void fight(Character opponent) {
         Integer adventurerRoll = Die.rollSixSided();
