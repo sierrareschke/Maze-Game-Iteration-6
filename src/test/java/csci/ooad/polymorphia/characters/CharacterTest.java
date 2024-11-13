@@ -15,7 +15,8 @@ class CharacterTest {
 
     @BeforeEach
     void setUp() {
-        joe = new Adventurer("Joe", 5.0);
+        Double initialHealth = 5.0;
+        joe = CharacterFactory.createAdventurer("Joe", Optional.of(initialHealth));
     }
 
     @Test
@@ -36,9 +37,10 @@ class CharacterTest {
         double leastHealth = 3.0;
 
         List<Character> characters = new ArrayList<>(Arrays.asList(
-                new Adventurer("Frodo", mostHealth),
-                new Creature("Ogre", mediumHealth),
-                new Adventurer("Arwen", leastHealth)));
+                CharacterFactory.createAdventurer("Frodo", Optional.of(mostHealth)),
+                CharacterFactory.createCreature("Ogre", Optional.of(mediumHealth)),
+                CharacterFactory.createAdventurer("Arwen", Optional.of(leastHealth))
+        ));
 
         Collections.sort(characters);
     }
@@ -54,7 +56,7 @@ class CharacterTest {
 
     @Test
     void testFightingMandatoryLossOfHalfAPoint() {
-        Creature ogre = new Creature("Ogre");
+        Character ogre = CharacterFactory.createCreature("Ogre", Optional.empty());
         joe.fight(ogre);
         // Joe should have lost 0.5 health and he started with a integer health value
         // of 5.0. After the fight he should have 4.5 health. Or 3.5, or 2.5, etc. depending
@@ -65,7 +67,7 @@ class CharacterTest {
     @Test
     void testMovingWithNoNeighbors() {
         Room room = new Room("room");
-        Adventurer adventurer = new Adventurer("Adventurer");
+        Character adventurer = CharacterFactory.createAdventurer("Adventurer", Optional.empty());
         room.add(adventurer);
 
         // Act -- no error occurs
@@ -75,21 +77,22 @@ class CharacterTest {
     @Test
     void testEatingFood() {
         Room room = new Room("room");
-        Adventurer adventurer = new Adventurer("Adventurer");
+        Character adventurer = CharacterFactory.createAdventurer("Adventurer", Optional.empty());
+        Double characterInitialHealth = adventurer.getHealth();
         room.add(adventurer);
         Food popcorn = new Food("popcorn");
         room.add(popcorn);
 
         adventurer.doAction();
 
-        assertEquals(adventurer.getHealth(), Character.DEFAULT_INITIAL_HEALTH + popcorn.getHealthValue() );
+        assertEquals(adventurer.getHealth(), characterInitialHealth + popcorn.getHealthValue() );
         assertFalse(room.hasFood());
     }
 
     @Test
     void testFighting() {
-        Adventurer adventurer = new Adventurer("Adventurer");
-        Creature creature = new Creature("Creature");
+        Character adventurer = CharacterFactory.createAdventurer("Adventurer", Optional.empty());
+        Character creature = CharacterFactory.createCreature("Creature", Optional.empty());
 
         double initialHealth = adventurer.getHealth();
         adventurer.fight(creature);
@@ -99,7 +102,7 @@ class CharacterTest {
 
     @Test
     void testCreatureDoesNotDoAction() {
-        Creature creature = new Creature("Creature");
+        Character creature = CharacterFactory.createCreature("Creature", Optional.empty());
         creature.doAction();
     }
 }

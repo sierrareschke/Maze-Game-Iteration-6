@@ -3,9 +3,7 @@ package csci.ooad.polymorphia;
 import csci.ooad.layout.intf.IMaze;
 import csci.ooad.layout.intf.IMazeObserver;
 import csci.ooad.layout.intf.IMazeSubject;
-import csci.ooad.polymorphia.characters.Adventurer;
 import csci.ooad.polymorphia.characters.Character;
-import csci.ooad.polymorphia.characters.Creature;
 import csci.ooad.polymorphia.maze.Maze;
 import csci.ooad.polymorphia.observer.MazeAdapter;
 import org.slf4j.Logger;
@@ -63,7 +61,7 @@ public class Polymorphia implements IMazeSubject, IObservable {
         return getLivingAdventurers().size();
     }
 
-    public List<Adventurer> getLivingAdventurers() {
+    public List<Character> getLivingAdventurers() {
         return maze.getLivingAdventurers();
     }
 
@@ -137,7 +135,7 @@ public class Polymorphia implements IMazeSubject, IObservable {
         return String.join("\n ", getLivingCreatures().stream().map(Object::toString).toList());
     }
 
-    public List<Creature> getLivingCreatures() {
+    public List<Character> getLivingCreatures() {
         return maze.getLivingCreatures();
     }
 

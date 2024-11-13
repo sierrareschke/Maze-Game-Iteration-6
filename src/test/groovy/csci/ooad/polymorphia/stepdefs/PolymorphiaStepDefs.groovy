@@ -1,15 +1,13 @@
 package csci.ooad.polymorphia.stepdefs
 
 import csci.ooad.polymorphia.EventType
-import csci.ooad.polymorphia.characters.Adventurer
-import csci.ooad.polymorphia.characters.Creature
+
 import csci.ooad.polymorphia.observer.AteFoodObserver
 import csci.ooad.polymorphia.observer.DeathObserver
 import csci.ooad.polymorphia.observer.FightObserver
 import csci.ooad.polymorphia.observer.GameOverObserver
 import csci.ooad.polymorphia.observer.LostHealthObserver
 import csci.ooad.polymorphia.observer.MovedObserver
-import io.cucumber.java.en.And
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
 
@@ -49,8 +47,8 @@ class PolymorphiaStepDefs {
 
     @When("adventurer {string} executes his turn")
     public void adventurerExecutesHisTurn(String adventurerName) {
-        List<Adventurer> adventurers = world.polymorphia.getLivingAdventurers();
-        Adventurer specifiedAdventurer = adventurers.find { it.name == adventurerName }
+        List<Character> adventurers = world.polymorphia.getLivingAdventurers();
+        Character specifiedAdventurer = adventurers.find { it.name == adventurerName }
 
         if (specifiedAdventurer) {
             specifiedAdventurer.doAction()

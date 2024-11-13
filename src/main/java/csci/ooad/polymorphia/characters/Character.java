@@ -37,6 +37,10 @@ public class Character implements Comparable<Character> {
     private static MoveStrategy moveStrategy;
 
 
+    ///////////////////////////////  new section:
+    protected String name;
+    private Double health;
+    private Room currentLocation;
 
     public Character(String name, Double initialHealth, FightStrategy fightStrategy, EatStrategy eatStrategy, MoveStrategy moveStrategy,CharacterType type) {
         this.name = name;
@@ -47,21 +51,6 @@ public class Character implements Comparable<Character> {
         this.type = type;
     }
 
-    public static EatStrategy getEatStrategy() {
-        return eatStrategy;
-    }
-
-    public static FightStrategy getFightStrategy() {
-        return fightStrategy;
-    }
-
-    public static MoveStrategy getMoveStrategy() {
-        return moveStrategy;
-    }
-
-
-    //////////////////////////////
-
     public Character(String name) {
         this(name, DEFAULT_INITIAL_HEALTH);
     }
@@ -69,6 +58,21 @@ public class Character implements Comparable<Character> {
     public Character(String name, Double initialHealth) {
         this.name = name;
         this.health = initialHealth;
+    }
+
+    public static EatStrategy getEatStrategy() {
+        return eatStrategy;
+    }
+
+
+    //////////////////////////////
+
+    public static FightStrategy getFightStrategy() {
+        return fightStrategy;
+    }
+
+    public static MoveStrategy getMoveStrategy() {
+        return moveStrategy;
     }
 
     public Room getCurrentLocation() {
