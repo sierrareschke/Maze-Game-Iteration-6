@@ -23,18 +23,10 @@ public class Character implements Comparable<Character> {
     static final Double HEALTH_LOST_IN_MOVING_ROOMS = 0.25;
     private static final Logger logger = LoggerFactory.getLogger(Character.class);
     private static final DecimalFormat formatter = new DecimalFormat("0.0");
-    protected String name;
-    private Double health;
-    private CharacterType type;
-
-    private Room currentLocation;
-
-
-    ///////////////////////////////  new section:
-
     private static FightStrategy fightStrategy;
     private static EatStrategy eatStrategy;
     private static MoveStrategy moveStrategy;
+    protected String name;
 
 
     ///////////////////////////////  new section:
