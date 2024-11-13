@@ -27,6 +27,6 @@ public class DefaultEatStrategy implements EatStrategy {
             //logger.info(message);
             post(EventType.AteSomething, message);
         }
-        return null; // TODO
+        return CommandFactory.createEatCommand(character);
     }
 }
