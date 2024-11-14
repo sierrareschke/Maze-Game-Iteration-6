@@ -11,10 +11,10 @@ import static csci.ooad.polymorphia.EventBus.post;
 
 public class FightCommand implements Command {
     static final Double HEALTH_LOST_IN_FIGHT_REGARDLESS_OF_OUTCOME = 0.5;
+    private static final Logger logger = LoggerFactory.getLogger(FightCommand.class);
     Character adventurer;
     Character opponent;
     Die dice;
-    private static final Logger logger = LoggerFactory.getLogger(FightCommand.class);
 
 
     public FightCommand(Character c1, Character c2) {
@@ -30,7 +30,9 @@ public class FightCommand implements Command {
         logger.info(adventurer + " is fighting " + opponent);
         logger.info(adventurer + " rolled " + adventurerRoll);
         logger.info(opponent + " rolled " + creatureRoll);
-
+        if (opponent == null) {
+           return;
+        }
         if (adventurerRoll > creatureRoll) {
             post(EventType.FightOutcome, adventurer.getName() + " won a battle against " + opponent.getName());
             opponent.loseFightDamage(adventurerRoll - creatureRoll);

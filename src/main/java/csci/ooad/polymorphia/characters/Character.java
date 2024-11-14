@@ -137,11 +137,9 @@ public class Character implements Comparable<Character> {
             Command move = moveStrategy.move(this);
             if (fight != null) {
                 fight.execute();
-            }
-            if (eat != null) {
+            } else if (eat != null) {
                 eat.execute();
-            }
-            if (move != null) {
+            }else if (move != null) {
                 move.execute();
             }
         } catch (NoFoodException e) {

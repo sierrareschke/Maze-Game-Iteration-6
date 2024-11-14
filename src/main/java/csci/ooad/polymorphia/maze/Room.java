@@ -123,11 +123,11 @@ public class Room {
     }
 
     public Character getHealthiestAdventurer() {
-        return getLivingAdventurers().stream().max(Comparator.naturalOrder()).get();
+        return getLivingAdventurers().stream().max(Comparator.naturalOrder()).orElse(null);
     }
 
     public Character getHealthiestCreature() {
-        return getLivingCreatures().stream().max(Comparator.naturalOrder()).get();
+        return getLivingCreatures().stream().max(Comparator.naturalOrder()).orElse(null);
     }
 
     public boolean hasFood() {
