@@ -105,14 +105,12 @@ class RoomTest {
         Character frodo = CharacterFactory.createAdventurer("Frodo", Optional.of(lowestHealth));
         room.add(frodo);
         Boolean hasFood = room.hasFood();
-        System.out.println(hasFood);
 
         // Act
         bilbo.doAction();
 
         Boolean stillHasFood = room.hasFood();
-        System.out.println(stillHasFood);
-
+        
         // Assert
         assertEquals(Food.DEFAULT_FOOD_HEALTH_VALUE + highestHealth, bilbo.getHealth());
     }
