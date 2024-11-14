@@ -22,10 +22,11 @@ public class EatCommand implements Command {
         Room room = character.getCurrentLocation();
         Boolean hasFood = room.hasFood();
         if (hasFood) {
-            Food foodItem = room.removeFoodItem();
+            Food foodItem = room.getFoodItems().get(0);
             character.gainHealth(foodItem.getHealthValue());
             String message = character.getName() + " just ate " + foodItem.getName();
             post(EventType.AteSomething, message);
+            room.removeFoodItem();
         }
     }
 }

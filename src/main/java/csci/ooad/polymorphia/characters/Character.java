@@ -128,7 +128,6 @@ public class Character implements Comparable<Character> {
         return type == CharacterType.Glutton;
     }
 
-
     public void doAction() {
         // Do nothing by default
         try {

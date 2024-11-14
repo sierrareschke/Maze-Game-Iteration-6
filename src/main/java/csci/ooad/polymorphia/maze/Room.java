@@ -13,10 +13,10 @@ import static java.util.Collections.*;
 
 
 public class Room {
-    private final String name;
-    private final List<Room> neighbors = new ArrayList<>();
-    private final List<Character> characters = new ArrayList<>();
-    private final List<Food> foodItems = new ArrayList<>();
+    private String name;
+    private List<Room> neighbors = new ArrayList<>();
+    private List<Character> characters = new ArrayList<>();
+    private List<Food> foodItems = new ArrayList<>();
 
     public Room(String name) {
         this.name = name;

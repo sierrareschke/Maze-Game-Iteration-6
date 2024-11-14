@@ -99,17 +99,22 @@ class RoomTest {
         double lowestHealth = 3;
 
         Room room = new Room("onlyRoom");
+        room.add(new Food("burger"));
         Character bilbo = CharacterFactory.createAdventurer("Bilbo", Optional.of(highestHealth));
         room.add(bilbo);
         Character frodo = CharacterFactory.createAdventurer("Frodo", Optional.of(lowestHealth));
         room.add(frodo);
-        room.add(new Food("burger"));
+        Boolean hasFood = room.hasFood();
+        System.out.println(hasFood);
 
         // Act
         bilbo.doAction();
 
+        Boolean stillHasFood = room.hasFood();
+        System.out.println(stillHasFood);
+
         // Assert
-        assertEquals(bilbo.getHealth(), highestHealth + Food.DEFAULT_FOOD_HEALTH_VALUE);
+        assertEquals(Food.DEFAULT_FOOD_HEALTH_VALUE + highestHealth, bilbo.getHealth());
     }
 
 //    @Test
