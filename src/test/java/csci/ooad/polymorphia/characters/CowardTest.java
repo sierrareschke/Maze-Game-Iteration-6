@@ -28,7 +28,7 @@ public class CowardTest {
 
         // Assert – the coward ran to the other room and lost some health doing it
         // since there was a creature in the room.
-        assertTrue(twoRoomMaze.getRoom("final").hasLivingAdventurers());
+        assertTrue(twoRoomMaze.getRoom("final").hasLivingCoward());
         assertTrue(coward.getHealth() < initialHealth);
     }
 

@@ -12,7 +12,7 @@ public class GluttonTest {
     @Test
     void testEating() {
         // Arrange
-        Double initialHealth = 3.0;
+        Double initialHealth = 5.0;
         Character glutton = CharacterFactory.createGlutton("Brad");
         Maze.getNewBuilder()
                 .createFullyConnectedRooms(1)
@@ -46,7 +46,7 @@ public class GluttonTest {
         glutton.doAction();
 
         // Assert – the coward ran to the other room
-        assertNotEquals(satanInitialHealth, satan.getHealth());
+        assertTrue(satan.getHealth() < satanInitialHealth, "Expected health to be less than health, but was " + satan.getHealth());
         assertTrue(twoRoomMaze.getRoom("initial").hasFood());
     }
 }

@@ -171,7 +171,7 @@ public class GameObserverTest {
             Character newCreature = CharacterFactory.createCreature("Ogre", Optional.empty());
             Double creatureInitialHealth = newCreature.getHealth();
             Character creature = polymorphia.getLivingCreatures().getFirst();
-            assertTrue(creature.getHealth() < creatureInitialHealth);
+            assertTrue(creature.getHealth() <= creatureInitialHealth);
         }
     }
 

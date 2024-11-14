@@ -95,6 +95,13 @@ public class Room {
                 .anyMatch(Character::isAlive);
     }
 
+    public Boolean hasLivingCoward() {
+        return characters.stream()
+                .filter(Character::isCoward)
+                .filter(Character::isAlive)
+                .anyMatch(Character::isAlive);
+    }
+
     public void remove(Character character) {
         characters.remove(character);
     }

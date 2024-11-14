@@ -129,7 +129,6 @@ public class Character implements Comparable<Character> {
     }
 
     public void doAction() {
-        // Do nothing by default
         try {
             Command fight = fightStrategy.fight(this);
             Command eat = eatStrategy.eat(this);

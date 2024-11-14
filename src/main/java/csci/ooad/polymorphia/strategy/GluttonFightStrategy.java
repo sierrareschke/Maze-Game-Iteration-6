@@ -12,8 +12,8 @@ public class GluttonFightStrategy implements FightStrategy {
         Room currentRoom = glutton.getCurrentLocation();
         Boolean isDemonPresent = currentRoom.hasDemon();
         Boolean isFoodPresent = currentRoom.hasFood();
-        if (isDemonPresent || isFoodPresent) {
-            Character creature = currentRoom.getHealthiestCreature();
+        if (isDemonPresent) {
+            Character creature = currentRoom.getDemon();
             return CommandFactory.createFightCommand(glutton, creature);
         } else {
             return null;

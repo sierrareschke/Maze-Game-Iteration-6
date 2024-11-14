@@ -24,7 +24,7 @@ public class DefaultEatStrategy implements EatStrategy {
             return CommandFactory.createEatCommand(character);
         }
         else{ // if there is not food, the character will move
-            return CommandFactory.createMoveCommand(character);
+            return null; // CommandFactory.createMoveCommand(character);
         }
     }
 }
