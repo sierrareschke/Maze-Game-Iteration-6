@@ -22,7 +22,7 @@ public class DefaultEatStrategy implements EatStrategy {
         // if there is food, the character will eat
         if (!foodItems.isEmpty()) {
             Food foodItem = room.removeFoodItem();
-            return CommandFactory.createEatCommand(character, foodItem);
+            return CommandFactory.createEatCommand(character);
         }
         else{ // if there is not food, the character will move
             return CommandFactory.createMoveCommand(character);

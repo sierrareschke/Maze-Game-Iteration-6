@@ -16,7 +16,7 @@ public class GluttonFightStrategy implements FightStrategy {
             Character creature = currentRoom.getHealthiestCreature();
             return CommandFactory.createFightCommand(glutton, creature);
         } else {
-            return CommandFactory.createMoveCommand(glutton);
+            return null;
         }
     }
 }

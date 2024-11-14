@@ -14,7 +14,7 @@ public class DemonFightStrategy implements FightStrategy {
         if (healthiestAdventurer != null) {
             return CommandFactory.createFightCommand(demon, healthiestAdventurer);
         } else {
-            return CommandFactory.createMoveCommand(demon);
+            return null;
         }
     }
 }

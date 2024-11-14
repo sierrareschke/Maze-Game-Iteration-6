@@ -15,7 +15,7 @@ public class KnightFightStrategy implements FightStrategy {
             Character creature = currentRoom.getHealthiestCreature();
             return CommandFactory.createFightCommand(knight, creature);
         } else {
-            return CommandFactory.createMoveCommand(knight);
+            return null;
         }
     }
 }

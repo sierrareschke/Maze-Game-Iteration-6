@@ -7,13 +7,13 @@ import csci.ooad.polymorphia.characters.Character;
 public class CommandFactory {
 
     public static Command createMoveCommand(Character character) {
-        return character.getMoveStrategy().move(character);
+        return new MoveCommand(character);
     }
 
     // Note: add another move command method if need target room passed in
 
-    public static Command createEatCommand(Character character, Food foodItem) {
-        return null;
+    public static Command createEatCommand(Character character) {
+        return new EatCommand(character);
     }
 
 

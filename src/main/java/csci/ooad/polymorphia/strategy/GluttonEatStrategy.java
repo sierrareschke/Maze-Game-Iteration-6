@@ -17,9 +17,8 @@ public class GluttonEatStrategy implements EatStrategy {
     public Command eat(Character character) {
         Room room = character.getCurrentLocation();
         List<Food> foodItems = room.getFoodItems();
-        while (!foodItems.isEmpty()) {
-            Food foodItem = room.removeFoodItem();
-            return CommandFactory.createEatCommand(character, foodItem);
+        if (!foodItems.isEmpty()) {
+            return CommandFactory.createEatCommand(character);
         }
         return CommandFactory.createNoCommand();
     }

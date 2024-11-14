@@ -14,9 +14,9 @@ public class MoveCommand implements Command {
     Character character;
     Room room;
 
-    public MoveCommand(Character character, Room room) {
+    public MoveCommand(Character character) {
         this.character = character;
-        this.room = room;
+        this.room = character.getCurrentLocation();
     }
 
     @Override

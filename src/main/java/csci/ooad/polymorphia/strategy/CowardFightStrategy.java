@@ -16,7 +16,7 @@ public class CowardFightStrategy implements FightStrategy {
             Character demon = currentRoom.getDemon();
             return CommandFactory.createFightCommand(coward, demon);
         } else {
-            return CommandFactory.createMoveCommand(coward);
+            return null;
         }
     }
 }

@@ -16,7 +16,7 @@ public class AdventurerFightStrategy implements FightStrategy {
             Character creature = currentRoom.getHealthiestCreature();
             return CommandFactory.createFightCommand(adventurer, creature);
         } else {
-            return CommandFactory.createMoveCommand(adventurer);
+            return null;
         }
     }
 }

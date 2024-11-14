@@ -24,10 +24,10 @@ public class Character implements Comparable<Character> {
     static Double HEALTH_LOST_IN_MOVING_ROOMS = 0.25;
     private static Logger logger = LoggerFactory.getLogger(Character.class);
     private static DecimalFormat formatter = new DecimalFormat("0.0");
-    private static FightStrategy fightStrategy;
-    private static EatStrategy eatStrategy;
-    private static MoveStrategy moveStrategy;
     protected String name;
+    private FightStrategy fightStrategy;
+    private EatStrategy eatStrategy;
+    private MoveStrategy moveStrategy;
     private Double health;
     private CharacterType type;
     private Room currentLocation;
@@ -42,15 +42,15 @@ public class Character implements Comparable<Character> {
         this.type = type;
     }
 
-    public static EatStrategy getEatStrategy() {
+    public EatStrategy getEatStrategy() {
         return eatStrategy;
     }
 
-    public static FightStrategy getFightStrategy() {
+    public FightStrategy getFightStrategy() {
         return fightStrategy;
     }
 
-    public static MoveStrategy getMoveStrategy() {
+    public MoveStrategy getMoveStrategy() {
         return moveStrategy;
     }
 
@@ -129,14 +129,22 @@ public class Character implements Comparable<Character> {
     }
 
 
-
     public void doAction() {
         // Do nothing by default
         try {
-            fightStrategy.fight(this).execute();
-            moveStrategy.move(this).execute();
-            eatStrategy.eat(this).execute();
-        } catch(NoFoodException e){
+            Command fight = fightStrategy.fight(this);
+            Command eat = eatStrategy.eat(this);
+            Command move = moveStrategy.move(this);
+            if (fight != null) {
+                fight.execute();
+            }
+            if (eat != null) {
+                eat.execute();
+            }
+            if (move != null) {
+                move.execute();
+            }
+        } catch (NoFoodException e) {
             throw new RuntimeException(e);
         }
     }
