@@ -1,11 +1,12 @@
 	Northwest:
-		Ogre(health: 3.0)
+		
 
 	Northeast:
-		Frodo(health: 5.0)
+		
 
 	Southwest:
-		
+		Frodo(health: 5.0)
+		Ogre(health: 3.0)
 
 	Southeast:
 		

@@ -18,8 +18,13 @@ Grace Ohlsen, Sierra Reschke and Nolan Brady
 #### Java Version: 21
 
 #### Comments/Assumptions: 
+We made the assumption that the flow of strategies would go fight, eat and move in terms of priority. All the tests passed therefore I think the logic stands.
+We reworked the NoFood Exceptions to avoid having to pass the exception throwing up the method stack. This also passed in tests.
+We also created strategies for different characters when there were variances in their movements as this seemed to be the cleanest approach to the different logic.
 
-TODO - FILL THIS OUT
+
+## Test Coverage
+![](homework_7_tests.png)
 
 ## Grading Rubric:
 
